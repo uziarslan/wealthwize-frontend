@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { CallbackSection } from "../../components/CallbackSection";
@@ -133,13 +134,6 @@ export const Home = () => {
     }
   };
 
-  const handleViewMore = () => {
-    const servicesSection = document.querySelector('#services');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
@@ -228,12 +222,13 @@ export const Home = () => {
         </div>
 
           <div className="flex justify-center mt-[50px] md:mt-[80px]">
-            <Button 
-              onClick={handleViewMore}
-              className="w-[139px] h-[46px] rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-base transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95"
-            >
-              View more
-            </Button>
+            <Link to="/services">
+              <Button 
+                className="w-[139px] h-[46px] rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-base transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95"
+              >
+                View more
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

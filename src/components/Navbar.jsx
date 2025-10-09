@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
@@ -7,17 +8,33 @@ import instagramIcon from "../assets/instagram.svg";
 import facebookIcon from "../assets/facebook.svg";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Our Services", href: "#services" },
-  { label: "Contact us", href: "#contact" },
-  { label: "Podcast", href: "#podcast" },
+  { label: "Home", href: "/", type: "route" },
+  { label: "About", href: "/about", type: "route" },
+  { label: "Our Services", href: "/services", type: "route" },
+  { label: "Contact us", href: "/contact", type: "route" },
 ];
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
+  
+  // Initialize active item based on current route
+  const getActiveItem = (pathname) => {
+    if (pathname === "/") return "Home";
+    if (pathname === "/about") return "About";
+    if (pathname === "/services") return "Our Services";
+    if (pathname === "/contact") return "Contact us";
+    return "Home";
+  };
+
+  const [activeItem, setActiveItem] = useState(getActiveItem(location.pathname));
+
+  // Update active item based on current route
+  useEffect(() => {
+    setActiveItem(getActiveItem(location.pathname));
+  }, [location.pathname]);
 
   const closeMobileMenu = () => {
     setIsClosing(true);
@@ -27,21 +44,31 @@ export const Navbar = () => {
     }, 300); // Match animation duration
   };
 
-  const handleNavClick = (label, href) => {
+  const handleNavClick = (label, href, type) => {
     setActiveItem(label);
     closeMobileMenu();
     
-    // Smooth scroll to section
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleContactClick = () => {
-    const contactSection = document.querySelector('#contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    if (type === "route") {
+      // Navigate to a different route
+      navigate(href);
+    } else if (type === "scroll") {
+      // If not on home page, navigate to home first
+      if (location.pathname !== "/") {
+        navigate("/");
+        // Wait for navigation to complete before scrolling
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
   };
 
@@ -56,16 +83,17 @@ export const Navbar = () => {
       <nav className="relative w-full z-30 h-[80px] md:h-[120px] lg:h-[150px]">
         <div className="max-w-[1440px] mx-auto h-full px-[20px] md:px-[40px] lg:px-[60px] flex items-center justify-between gap-[20px]">
           <img
-            className="w-[80px] md:w-[120px] lg:w-[160px] h-auto object-cover flex-shrink-0"
+            className="w-[80px] md:w-[120px] lg:w-[160px] h-auto object-cover flex-shrink-0 cursor-pointer"
             alt="WealthWize Logo"
             src={logo}
+            onClick={() => navigate("/")}
           />
 
           <div className="hidden lg:flex items-center gap-[30px] lg:gap-[40px] xl:gap-[60px]">
             {navItems.map((item, index) => (
               <div key={index} className="relative">
                 <button
-                  onClick={() => handleNavClick(item.label, item.href)}
+                  onClick={() => handleNavClick(item.label, item.href, item.type)}
                   className={`h-[27px] flex items-center justify-center [font-family:'Poppins',Helvetica] text-base xl:text-lg text-center tracking-[0] leading-[normal] cursor-pointer transition-colors ${
                     activeItem === item.label
                       ? "font-semibold text-[#5cdfe4]"
@@ -94,12 +122,13 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <Button 
-              onClick={handleContactClick}
-              className="h-[42px] xl:h-[46px] px-[20px] xl:px-[28px] rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-sm xl:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
-            >
-              Contact us
-            </Button>
+            <a href="tel:11111111111111111">
+              <Button 
+                className="h-[42px] xl:h-[46px] px-[20px] xl:px-[28px] rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-sm xl:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+              >
+                Contact us
+              </Button>
+            </a>
           </div>
 
           <button
@@ -127,7 +156,7 @@ export const Navbar = () => {
             {navItems.map((item, index) => (
               <button
                 key={index}
-                onClick={() => handleNavClick(item.label, item.href)}
+                onClick={() => handleNavClick(item.label, item.href, item.type)}
                 className={`h-[40px] flex items-center justify-center [font-family:'Poppins',Helvetica] text-xl text-center tracking-[0] leading-[normal] ${
                   activeItem === item.label
                     ? "font-semibold text-[#5cdfe4]"
@@ -150,12 +179,13 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <Button 
-              onClick={handleContactClick}
-              className="h-[50px] w-full rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-lg mt-[20px] transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
-            >
-              Contact us
-            </Button>
+            <a href="tel:11111111111111111" className="w-full">
+              <Button 
+                className="h-[50px] w-full rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-lg mt-[20px] transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+              >
+                Contact us
+              </Button>
+            </a>
           </div>
         </div>
       )}

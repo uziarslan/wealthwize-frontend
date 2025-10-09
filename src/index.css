@@ -148,4 +148,8 @@
     background-size: 200% 200%;
     animation: gradientMove 4s ease infinite;
   }
+
+  .animate-gradient-slow {
+    animation: gradientMove 8s ease-in-out infinite;
+  }
 }

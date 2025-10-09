@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const footerNavItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Our Services", href: "#services" },
-  { label: "Contact us", href: "#contact" },
+  { label: "Home", href: "/", type: "route" },
+  { label: "About", href: "/about", type: "route" },
+  { label: "Our Services", href: "/services", type: "route" },
+  { label: "Contact us", href: "/contact", type: "route" },
 ];
 
 const socialLinks = [
@@ -14,15 +15,49 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
-  const [activeItem, setActiveItem] = useState("Home");
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Initialize active item based on current route
+  const getActiveItem = (pathname) => {
+    if (pathname === "/") return "Home";
+    if (pathname === "/about") return "About";
+    if (pathname === "/services") return "Our Services";
+    if (pathname === "/contact") return "Contact us";
+    return "Home";
+  };
 
-  const handleNavClick = (label, href) => {
+  const [activeItem, setActiveItem] = useState(getActiveItem(location.pathname));
+
+  // Update active item based on current route
+  useEffect(() => {
+    setActiveItem(getActiveItem(location.pathname));
+  }, [location.pathname]);
+
+  const handleNavClick = (label, href, type) => {
     setActiveItem(label);
     
-    // Smooth scroll to section
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (type === "route") {
+      // Navigate to a different route
+      navigate(href);
+    } else if (type === "scroll") {
+      // If not on home page, navigate to home first
+      if (location.pathname !== "/") {
+        navigate("/");
+        // Wait for navigation to complete before scrolling
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
   };
 
@@ -40,7 +75,7 @@ export const Footer = () => {
             {footerNavItems.map((item, index) => (
               <button
                 key={index}
-                onClick={() => handleNavClick(item.label, item.href)}
+                onClick={() => handleNavClick(item.label, item.href, item.type)}
                 className={`flex items-center justify-center transition-all flex-shrink-0 ${
                   index > 0 ? "ml-[3px] sm:ml-[4px] md:ml-[6.8px]" : ""
                 } px-[8px] sm:px-[12px] md:px-0 ${
