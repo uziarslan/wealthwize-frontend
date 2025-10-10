@@ -73,9 +73,15 @@ export const Navbar = () => {
   };
 
   const handleSocialClick = (platform) => {
-    console.log(`Navigate to ${platform}`);
-    // Add your social media URLs here
-    // window.open('https://linkedin.com/yourpage', '_blank');
+    const urls = {
+      'LinkedIn': 'https://linkedin.com',
+      'Facebook': 'https://www.instagram.com/wealthwizeconsulting/',
+      'Instagram': 'https://www.facebook.com/people/wealthwizeconsulting/61566153907524/?mibextid=LQQJ4d'
+    };
+    
+    if (urls[platform]) {
+      window.open(urls[platform], '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (

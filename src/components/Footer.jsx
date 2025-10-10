@@ -10,8 +10,8 @@ const footerNavItems = [
 
 const socialLinks = [
   { name: "LinkedIn", url: "https://linkedin.com" },
-  { name: "Instagram", url: "https://instagram.com" },
-  { name: "Facebook", url: "https://facebook.com" },
+  { name: "Instagram", url: "https://www.instagram.com/wealthwizeconsulting/" },
+  { name: "Facebook", url: "https://www.facebook.com/people/wealthwizeconsulting/61566153907524/?mibextid=LQQJ4d" },
 ];
 
 export const Footer = () => {
@@ -62,9 +62,7 @@ export const Footer = () => {
   };
 
   const handleSocialClick = (name, url) => {
-    console.log(`Navigate to ${name}: ${url}`);
-    // Uncomment to open in new tab
-    // window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

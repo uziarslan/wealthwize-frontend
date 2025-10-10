@@ -112,11 +112,6 @@ export const ContactUs = () => {
             <h1 className="font-bold text-[#5ce0e5] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px] lg:mb-[28px]">
               Contact Us
             </h1>
-
-            <p className="max-w-[791px] mx-auto opacity-70 [font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[16px] md:text-[18px] lg:text-xl text-center tracking-[0] leading-[1.6] md:leading-[1.5] lg:leading-[30.8px]">
-              Providing insight-driven transformation to investment banks, wealth
-              and asset managers, exchanges, clearing houses.
-            </p>
           </div>
         </section>
 

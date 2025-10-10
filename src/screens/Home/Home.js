@@ -25,19 +25,19 @@ const services = [
     image: mortgageImg,
     title: "Mortgage consulting",
     description:
-      "Providing insight-driven transformation to investment banks,\nwealth and asset managers,\nexchanges, clearing houses.",
+      "Whether you're a first-time homebuyer or looking to refinance, our mortgage consultants provide tailored advice to help you secure the best rates and terms.",
   },
   {
     image: financialImg,
     title: "Financial consulting",
     description:
-      "Providing insight-driven transformation to investment banks,\nwealth and asset managers,\nexchanges, clearing houses.",
+      "Our financial consulting services are designed to help individuals and businesses achieve long-term financial stability.",
   },
   {
     image: businessImg,
     title: "Business consulting",
     description:
-      "Providing insight-driven transformation to investment banks,\nwealth and asset managers,\nexchanges, clearing houses.",
+      "We provide comprehensive business consulting services to help entrepreneurs and established companies optimize their operations, increase profitability, and drive growth.",
   },
 ];
 
@@ -192,9 +192,12 @@ export const Home = () => {
 
       <section id="services" className="relative w-full mt-[80px] md:mt-[120px]">
         <div className="max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
-          <h2 className="w-full text-center [font-family:'Poppins',Helvetica] font-bold text-[#5ce0e5] text-[32px] md:text-[40px] lg:text-5xl tracking-[0] leading-[normal] mb-[40px] md:mb-[80px] lg:mb-[146px]">
-            Services We Provide
+          <h2 className="w-full text-center [font-family:'Poppins',Helvetica] font-bold text-black text-[22px] md:text-[26px] lg:text-[32px] tracking-[0] leading-[normal] mb-[8px] md:mb-[10px]">
+            Approval, Pre-Approval, Refinance or Switch
           </h2>
+          <p className="max-w-[333px] mx-auto opacity-80 [font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] transition-opacity duration-300 hover:opacity-100 mb-[40px]">
+            Quick approvals for Excellent, Fair, or Bad Credit
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] lg:gap-[42px]">
           {services.map((service, index) => (

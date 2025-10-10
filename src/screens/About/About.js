@@ -11,25 +11,25 @@ const whyUsFeatures = [
         icon: featureIcon,
         title: "Tailored Solutions",
         description:
-            "Distribution and marketing with key capabilities in customer analytics.",
+            "Our team tailors mortgage advice based on your unique financial situation, long-term goals, and current market conditions.",
     },
     {
         icon: featureIcon,
         title: "Expert Team",
         description:
-            "Distribution and marketing with key capabilities in customer analytics.",
+            "With years of experience and knowledge of the mortgage landscape, our consultants are equipped to provide advice that maximizes your financial opportunities.",
     },
     {
         icon: featureIcon,
-        title: "Client-Centric Focus",
+        title: "Access to a Wide Network",
         description:
-            "Distribution and marketing with key capabilities in customer analytics.",
+            "We work with a broad range of lenders, giving you access to the best rates and terms available, whether you’re a first-time home buyer or looking to finance.",
     },
     {
         icon: featureIcon,
-        title: "Collaborative Approach",
+        title: "Long-Term Relationship",
         description:
-            "Distribution and marketing with key capabilities in customer analytics.",
+            "We aim to build a lasting relationship by offering continuous support, whether it's a future mortgage renewal, refinance, or new home purchase.",
     },
 ];
 
@@ -54,15 +54,7 @@ export const About = () => {
                             </h1>
 
                             <p className="w-full max-w-[797px] [font-family:'Inter',Helvetica] font-normal text-white text-[14px] sm:text-[16px] md:text-[18px] lg:text-xl text-center tracking-[0] leading-[1.6] md:leading-[1.5] lg:leading-[25.5px]">
-                                aims to empower individuals by providing tailored mortgage
-                                solutions and expert financial consulting. We are committed to
-                                guiding our clients through every step of the home financing
-                                journey with integrity, transparency, and personalized service.
-                                <br className="hidden md:block" />
-                                <span className="block mt-2 md:mt-0"> </span>
-                                We aim to build lasting relationships, ensuring each client
-                                achieves their home ownership dreams with confidence and peace
-                                of mind.
+                                Wealthwize Consulting Group is committed to helping individuals and businesses achieve financial success. Specializing in mortgage consulting, financial planning, and business strategy, we provide personalized solutions tailored to your unique needs. Our experienced team offers expert guidance with a focus on transparency, trust, and delivering results. At Wealthwize, your financial success is our priority.
                             </p>
                         </div>
                     </div>
@@ -75,7 +67,7 @@ export const About = () => {
                         </h2>
 
                         <p className="max-w-[333px] flex items-center justify-center opacity-80 [font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] mb-[40px] md:mb-[55px] lg:mb-[67px] transition-opacity duration-300 hover:opacity-100">
-                            Loreum ipsum text is a dummy text
+                            Your Trusted Partner for Financial Growth and Success
                         </p>
 
                         <div className="flex flex-col lg:flex-row gap-[40px] md:gap-[60px] lg:gap-[82px] w-full max-w-[1162px] justify-center items-center">

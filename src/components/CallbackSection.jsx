@@ -62,6 +62,9 @@ export const CallbackSection = () => {
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full px-[20px] md:px-[40px] gap-[24px] sm:gap-[30px] md:gap-[40px]">
             <div className="text-center transform transition-transform duration-300 group-hover:scale-105">
+              <h3 className="[font-family:'Poppins',Helvetica] font-semibold text-[#b9f7f8] text-xs sm:text-sm md:text-base uppercase tracking-widest mb-[8px]">
+                READY TO GET YOUR MORTGAGE APPROVED?
+              </h3>
               <h2 className="[font-family:'Poppins',Helvetica] font-bold text-white text-[24px] sm:text-[28px] md:text-[36px] lg:text-[44px] tracking-[0] leading-[normal] mb-[12px] sm:mb-[15px] md:mb-[20px]">
                 Request a call back?
               </h2>
