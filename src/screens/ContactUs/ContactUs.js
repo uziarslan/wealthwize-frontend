@@ -109,7 +109,7 @@ export const ContactUs = () => {
       <main className="flex-1 flex flex-col">
         <section className="relative w-full pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[95px] px-[20px] md:px-[40px] lg:px-[60px]">
           <div className="max-w-[1440px] mx-auto text-center">
-            <h1 className="font-bold text-[#5ce0e5] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px] lg:mb-[28px]">
+            <h1 className="font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px] lg:mb-[28px]">
               Contact Us
             </h1>
           </div>
@@ -128,18 +128,18 @@ export const ContactUs = () => {
                 >
                   <Card className="flex flex-col items-center border-0 shadow-none bg-transparent transition-all duration-300 hover:scale-105 group">
                     <CardContent className="flex flex-col items-center p-0">
-                      <div className="w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] bg-[#5CE0E5] bg-opacity-10 flex items-center justify-center mb-[20px] md:mb-[28px] lg:mb-[38px] transition-all duration-300 group-hover:bg-opacity-25 group-hover:shadow-lg">
+                      <div className="w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] bg-[#F47A20] bg-opacity-10 flex items-center justify-center mb-[20px] md:mb-[28px] lg:mb-[38px] transition-all duration-300 group-hover:bg-opacity-25 group-hover:shadow-lg">
                         <img
                           className="w-[38px] h-[38px] md:w-[46px] md:h-[46px] lg:w-[54px] lg:h-[54px] transition-transform duration-300 group-hover:scale-110"
                           alt={info.title}
                           src={info.icon}
                         />
                       </div>
-                      <h3 className="flex items-center justify-center [font-family:'Inter',Helvetica] font-bold text-[#091a24] text-[18px] md:text-[20px] lg:text-2xl text-center tracking-[0] leading-[normal] mb-[20px] md:mb-[28px] lg:mb-[38px] transition-colors duration-300 group-hover:text-[#5CE0E5]">
+                      <h3 className="flex items-center justify-center [font-family:'Inter',Helvetica] font-bold text-[#04343C] text-[18px] md:text-[20px] lg:text-2xl text-center tracking-[0] leading-[normal] mb-[20px] md:mb-[28px] lg:mb-[38px] transition-colors duration-300 group-hover:text-[#F47A20]">
                         {info.title}
                       </h3>
                       <p
-                        className={`flex items-center justify-center ${info.detailOpacity} [font-family:${info.title === "Phone" ? "'Inter'" : "'Poppins'"},Helvetica] font-medium text-[#091a24] text-[14px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 group-hover:opacity-100`}
+                        className={`flex items-center justify-center ${info.detailOpacity} [font-family:${info.title === "Phone" ? "'Inter'" : "'Poppins'"},Helvetica] font-medium text-[#5E6E73] text-[14px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 group-hover:opacity-100`}
                       >
                         {info.detail}
                       </p>
@@ -152,11 +152,11 @@ export const ContactUs = () => {
         </section>
 
         <section className="w-full pb-[60px] md:pb-[80px] lg:pb-[100px] px-[20px] md:px-[40px] lg:px-[60px]">
-          <div className="max-w-[1340px] mx-auto bg-[#c4c4c4] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] relative overflow-hidden">
+          <div className="max-w-[1340px] mx-auto bg-[#04343C] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] relative overflow-hidden">
             <div
-              className="absolute inset-0 opacity-80 animate-gradient-slow"
+              className="absolute inset-0 opacity-90 animate-gradient-slow"
               style={{
-                background: 'linear-gradient(225deg, rgba(92,224,229,1) 0%, rgba(43,79,238,1) 50%, rgba(92,224,229,1) 100%)',
+                background: 'linear-gradient(225deg, rgba(244,122,32,1) 0%, rgba(14,92,102,1) 50%, rgba(244,122,32,1) 100%)',
                 backgroundSize: '200% 200%',
               }}
             />
@@ -216,7 +216,7 @@ export const ContactUs = () => {
 
                 <Button
                   type="submit"
-                  className="h-[50px] md:h-[55px] lg:h-[60px] border border-solid border-white bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] opacity-[0.99] [font-family:'Poppins',Helvetica] font-medium text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal] hover:opacity-100 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95"
+                  className="h-[50px] md:h-[55px] lg:h-[60px] border border-solid border-white bg-[#F47A20] hover:bg-[#0E5C66] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] [font-family:'Poppins',Helvetica] font-medium text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95"
                 >
                   Submit
                 </Button>

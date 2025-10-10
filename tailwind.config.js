@@ -15,6 +15,16 @@ module.exports = {
         },
         extend: {
             colors: {
+                // WealthWize Brand Colors - Direct references
+                'brand': {
+                    'deep-teal': '#04343C',
+                    'orange': '#F47A20',
+                    'light-teal': '#0E5C66',
+                    'slate': '#5E6E73',
+                    'beige': '#F8F8F7',
+                    'white': '#FFFFFF',
+                },
+                // Tailwind/shadcn color system
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",

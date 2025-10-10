@@ -57,12 +57,12 @@ export const CallbackSection = () => {
     <section id="contact" className="relative w-full mt-[80px] md:mt-[120px] mb-[80px] md:mb-[120px]">
       <div className="max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
         <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px] overflow-hidden group">
-          <div className="absolute top-0 left-0 w-full h-full bg-[#c4c4c4] rounded-[20px] sm:rounded-[25px] md:rounded-[30px] rotate-180" />
-          <div className="absolute top-0 left-0 w-full h-full rounded-[20px] sm:rounded-[25px] md:rounded-[30px] bg-[linear-gradient(135deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_50%,rgba(92,224,229,1)_100%)] opacity-85 group-hover:opacity-95 transition-opacity duration-300 animate-gradient" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[#04343C] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]" />
+          <div className="absolute top-0 left-0 w-full h-full rounded-[20px] sm:rounded-[25px] md:rounded-[30px] bg-[linear-gradient(135deg,rgba(244,122,32,1)_0%,rgba(14,92,102,1)_50%,rgba(244,122,32,1)_100%)] opacity-90 group-hover:opacity-95 transition-opacity duration-300 animate-gradient" />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full px-[20px] md:px-[40px] gap-[24px] sm:gap-[30px] md:gap-[40px]">
             <div className="text-center transform transition-transform duration-300 group-hover:scale-105">
-              <h3 className="[font-family:'Poppins',Helvetica] font-semibold text-[#b9f7f8] text-xs sm:text-sm md:text-base uppercase tracking-widest mb-[8px]">
+              <h3 className="[font-family:'Poppins',Helvetica] font-semibold text-[#F8F8F7] text-xs sm:text-sm md:text-base uppercase tracking-widest mb-[8px]">
                 READY TO GET YOUR MORTGAGE APPROVED?
               </h3>
               <h2 className="[font-family:'Poppins',Helvetica] font-bold text-white text-[24px] sm:text-[28px] md:text-[36px] lg:text-[44px] tracking-[0] leading-[normal] mb-[12px] sm:mb-[15px] md:mb-[20px]">

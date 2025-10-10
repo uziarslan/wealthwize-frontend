@@ -49,7 +49,7 @@ export const About = () => {
 
                     <div className="relative z-10 py-[50px] sm:py-[60px] md:py-[70px] lg:py-[80px] max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
                         <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[25px] lg:gap-[31px]">
-                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#5ce0e5] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
+                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
                                 WealthWize Consulting Group
                             </h1>
 
@@ -62,11 +62,11 @@ export const About = () => {
 
                 <section className="w-full px-[20px] md:px-[40px] lg:px-[50px] mb-[60px] md:mb-[80px] lg:mb-[102px]">
                     <div className="max-w-[1440px] mx-auto flex flex-col items-center">
-                        <h2 className="flex items-center justify-center [font-family:'Poppins',Helvetica] font-bold text-[#5ce0e5] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px] transition-all duration-300 hover:scale-105">
+                        <h2 className="flex items-center justify-center [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px] transition-all duration-300 hover:scale-105">
                             Why us
                         </h2>
 
-                        <p className="max-w-[333px] flex items-center justify-center opacity-80 [font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] mb-[40px] md:mb-[55px] lg:mb-[67px] transition-opacity duration-300 hover:opacity-100">
+                        <p className="max-w-[333px] flex items-center justify-center opacity-80 [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] mb-[40px] md:mb-[55px] lg:mb-[67px] transition-opacity duration-300 hover:opacity-100">
                             Your Trusted Partner for Financial Growth and Success
                         </p>
 
@@ -81,7 +81,7 @@ export const About = () => {
                                 {whyUsFeatures.map((feature, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col p-[20px] md:p-[24px] lg:p-[28px] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#5ce0e5]/5 hover:to-[#2b4fee]/5 hover:shadow-lg hover:scale-[1.02] cursor-pointer group"
+                                        className="flex flex-col p-[20px] md:p-[24px] lg:p-[28px] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F47A20]/5 hover:to-[#0E5C66]/5 hover:shadow-lg hover:scale-[1.02] cursor-pointer group"
                                         style={{ animationDelay: `${index * 100}ms` }}
                                     >
                                         <img
@@ -89,10 +89,10 @@ export const About = () => {
                                             alt="Group"
                                             src={feature.icon}
                                         />
-                                        <h3 className="flex items-center [font-family:'Poppins',Helvetica] font-bold text-[#091a24] text-[22px] md:text-[25px] lg:text-[28px] tracking-[0] leading-[normal] mb-[6px] transition-colors duration-300 group-hover:text-[#5ce0e5]">
+                                        <h3 className="flex items-center [font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[22px] md:text-[25px] lg:text-[28px] tracking-[0] leading-[normal] mb-[6px] transition-colors duration-300 group-hover:text-[#F47A20]">
                                             {feature.title}
                                         </h3>
-                                        <p className="w-full max-w-[434px] opacity-65 [font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[15px] md:text-[16px] lg:text-lg tracking-[0] leading-[normal] text-left transition-all duration-300 group-hover:opacity-80">
+                                        <p className="w-full max-w-[434px] opacity-65 [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[15px] md:text-[16px] lg:text-lg tracking-[0] leading-[normal] text-left transition-all duration-300 group-hover:opacity-80">
                                             {feature.description}
                                         </p>
                                     </div>

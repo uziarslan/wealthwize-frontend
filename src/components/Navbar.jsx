@@ -86,10 +86,10 @@ export const Navbar = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <nav className="relative w-full z-30 h-[80px] md:h-[120px] lg:h-[150px]">
+      <nav className="relative w-full z-30 h-[70px] md:h-[85px] lg:h-[100px]">
         <div className="max-w-[1440px] mx-auto h-full px-[20px] md:px-[40px] lg:px-[60px] flex items-center justify-between gap-[20px]">
           <img
-            className="w-[80px] md:w-[120px] lg:w-[160px] h-auto object-cover flex-shrink-0 cursor-pointer"
+            className="h-[45px] md:h-[55px] lg:h-[65px] w-auto object-contain flex-shrink-0 cursor-pointer"
             alt="WealthWize Logo"
             src={logo}
             onClick={() => navigate("/")}
@@ -102,14 +102,14 @@ export const Navbar = () => {
                   onClick={() => handleNavClick(item.label, item.href, item.type)}
                   className={`h-[27px] flex items-center justify-center [font-family:'Poppins',Helvetica] text-base xl:text-lg text-center tracking-[0] leading-[normal] cursor-pointer transition-colors ${
                     activeItem === item.label
-                      ? "font-semibold text-[#5cdfe4]"
-                      : "font-normal text-[#091a24] opacity-60 hover:opacity-100"
+                      ? "font-semibold text-[#F47A20]"
+                      : "font-normal text-[#04343C] opacity-60 hover:opacity-100"
                   }`}
                 >
                   {item.label}
                 </button>
                 {activeItem === item.label && (
-                  <div className="absolute top-[27px] left-1/2 transform -translate-x-1/2 w-5 h-[3px] bg-[#5cdfe4]" />
+                  <div className="absolute top-[27px] left-1/2 transform -translate-x-1/2 w-5 h-[3px] bg-[#F47A20]" />
                 )}
               </div>
             ))}
@@ -130,7 +130,7 @@ export const Navbar = () => {
 
             <a href="tel:11111111111111111">
               <Button 
-                className="h-[42px] xl:h-[46px] px-[20px] xl:px-[28px] rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-sm xl:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+                className="h-[42px] xl:h-[46px] px-[20px] xl:px-[28px] rounded-xl bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-normal text-white text-sm xl:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
               >
                 Contact us
               </Button>
@@ -138,7 +138,7 @@ export const Navbar = () => {
           </div>
 
           <button
-            className="lg:hidden p-2 text-[#091a24] z-50"
+            className="lg:hidden p-2 text-[#04343C] z-50"
             onClick={() => mobileMenuOpen ? closeMobileMenu() : setMobileMenuOpen(true)}
             aria-label="Toggle menu"
           >
@@ -152,7 +152,7 @@ export const Navbar = () => {
           <div className="flex items-end justify-end p-4">
             <button
               onClick={closeMobileMenu}
-              className="text-[#091a24] p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="text-[#04343C] p-2 hover:bg-gray-100 rounded-lg transition-colors"
               aria-label="Close menu"
             >
               <X size={32} />
@@ -165,8 +165,8 @@ export const Navbar = () => {
                 onClick={() => handleNavClick(item.label, item.href, item.type)}
                 className={`h-[40px] flex items-center justify-center [font-family:'Poppins',Helvetica] text-xl text-center tracking-[0] leading-[normal] ${
                   activeItem === item.label
-                    ? "font-semibold text-[#5cdfe4]"
-                    : "font-normal text-[#091a24] opacity-60"
+                    ? "font-semibold text-[#F47A20]"
+                    : "font-normal text-[#04343C] opacity-60"
                 }`}
               >
                 {item.label}
@@ -187,7 +187,7 @@ export const Navbar = () => {
 
             <a href="tel:11111111111111111" className="w-full">
               <Button 
-                className="h-[50px] w-full rounded-xl bg-[linear-gradient(90deg,rgba(92,224,229,1)_0%,rgba(43,79,238,1)_100%)] [font-family:'Poppins',Helvetica] font-normal text-white text-lg mt-[20px] transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+                className="h-[50px] w-full rounded-xl bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-normal text-white text-lg mt-[20px] transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
               >
                 Contact us
               </Button>

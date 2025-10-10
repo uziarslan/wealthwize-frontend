@@ -16,7 +16,7 @@ const ContactExpertButton = () => (
             inline-flex
             items-center
             gap-1.5
-            text-[#1195a8]
+            text-[#0E5C66]
             text-sm
             font-semibold
             [font-family:'Poppins',Helvetica]
@@ -25,7 +25,7 @@ const ContactExpertButton = () => (
             bg-transparent
             transition-colors
             duration-150
-            hover:text-[#125f6d]
+            hover:text-[#F47A20]
             focus:outline-none
             focus-visible:underline
             no-underline
@@ -41,7 +41,7 @@ const ContactExpertButton = () => (
             textTransform: "uppercase",
             letterSpacing: "0.06em",
             textDecoration: "none",
-            color: "#1195a8" // slightly darker teal tone
+            color: "#0E5C66" // Light Teal
         }}
     >
         Contact an Expert
@@ -86,7 +86,7 @@ const Chips = ({ chips }) => (
         {chips.map((chip, idx) => (
             <span
                 key={idx}
-                className="px-3 py-1 rounded-full bg-[#e1fafd] text-[#1976d2] text-xs font-semibold border border-[#5ce0e5] [font-family:'Poppins',Helvetica]"
+                className="px-3 py-1 rounded-full bg-[#F8F8F7] text-[#04343C] text-xs font-semibold border border-[#F47A20] [font-family:'Poppins',Helvetica]"
             >
                 {chip}
             </span>
@@ -110,7 +110,7 @@ export const Services = () => {
 
                     <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[50px] md:py-[60px]">
                         <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[25px] lg:gap-[31px]">
-                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#5ce0e5] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
+                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
                                 Our Services
                             </h1>
                             <p className="w-full max-w-[797px] [font-family:'Inter',Helvetica] font-normal text-white text-[14px] sm:text-[16px] md:text-[18px] lg:text-xl text-center tracking-[0] leading-[1.6] md:leading-[1.5] lg:leading-[25.5px]">
@@ -121,10 +121,10 @@ export const Services = () => {
                 </section>
 
                 <section className="flex flex-col items-center w-full max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[50px] mb-[60px] md:mb-[80px] lg:mb-[104px]">
-                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#5ce0e5] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px]">
+                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px]">
                         Services We Provide
                     </h2>
-                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#091a24] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] opacity-80 mb-[40px] md:mb-[55px] lg:mb-[77px]">
+                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] opacity-80 mb-[40px] md:mb-[55px] lg:mb-[77px]">
                         Covered in these areas
                     </p>
 
@@ -142,10 +142,10 @@ export const Services = () => {
                                             src={service.image}
                                         />
                                     </div>
-                                    <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#091a24] text-[22px] md:text-[25px] lg:text-[28px] text-center tracking-[0] leading-[normal] mb-[16px] md:mb-[20px] lg:mb-[26px] transition-colors duration-300 group-hover:text-[#5ce0e5]">
+                                    <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[22px] md:text-[25px] lg:text-[28px] text-center tracking-[0] leading-[normal] mb-[16px] md:mb-[20px] lg:mb-[26px] transition-colors duration-300 group-hover:text-[#F47A20]">
                                         {service.title}
                                     </h3>
-                                    <p className="w-full max-w-[352px] [font-family:'Poppins',Helvetica] font-normal text-[#696969] text-[15px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] opacity-65 transition-opacity duration-300 group-hover:opacity-80">
+                                    <p className="w-full max-w-[352px] [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[15px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] opacity-65 transition-opacity duration-300 group-hover:opacity-80">
                                         {service.description}
                                     </p>
                                     {service.chips && Array.isArray(service.chips) && service.chips.length > 0 && (
