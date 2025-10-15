@@ -89,7 +89,7 @@ export const Navbar = () => {
       <nav className="relative w-full z-30 h-[70px] md:h-[85px] lg:h-[100px]">
         <div className="max-w-[1440px] mx-auto h-full px-[20px] md:px-[40px] lg:px-[60px] flex items-center justify-between gap-[20px]">
           <img
-            className="h-[45px] md:h-[55px] lg:h-[65px] w-auto object-contain flex-shrink-0 cursor-pointer"
+            className="h-[55px] md:h-[70px] lg:h-[85px] w-auto object-contain flex-shrink-0 cursor-pointer transition-all duration-300 hover:scale-105"
             alt="WealthWize Logo"
             src={logo}
             onClick={() => navigate("/")}
@@ -128,7 +128,7 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <a href="tel:11111111111111111">
+            <a href="tel:+16478783371">
               <Button 
                 className="h-[42px] xl:h-[46px] px-[20px] xl:px-[28px] rounded-xl bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-normal text-white text-sm xl:text-base whitespace-nowrap transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
               >
@@ -185,7 +185,7 @@ export const Navbar = () => {
               </button>
             </div>
 
-            <a href="tel:11111111111111111" className="w-full">
+            <a href="tel:+16478783371" className="w-full">
               <Button 
                 className="h-[50px] w-full rounded-xl bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-normal text-white text-lg mt-[20px] transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
               >

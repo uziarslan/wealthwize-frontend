@@ -2,103 +2,178 @@ import React from "react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { CallbackSection } from "../../components/CallbackSection";
-import whyUsImg from "../../assets/why-us-image.png";
 import heroBg from "../../assets/about-hero-bg.jpg";
-import featureIcon from "../../assets/feature-icon.svg";
+import taxPrepIcon from "../../assets/tax-prep-icon.svg";
+import taxPlanningIcon from "../../assets/tax-planning-icon.svg";
+import taxResolutionIcon from "../../assets/tax-resolution-icon.svg";
+import missionIllustration from "../../assets/mission-illustration.svg";
+import servicesIllustration from "../../assets/services-illustration.svg";
+import processIllustration from "../../assets/process-illustration.svg";
 
-const whyUsFeatures = [
+const aboutSections = [
     {
-        icon: featureIcon,
-        title: "Tailored Solutions",
+        illustration: missionIllustration,
+        badge: "Our Mission",
+        badgeColor: "orange",
+        title: "Mission",
         description:
-            "Our team tailors mortgage advice based on your unique financial situation, long-term goals, and current market conditions.",
+            "At WealthWize, our mission is to simplify the tax process for our clients. We understand that taxes can be complicated and stressful, which is why we are committed to providing reliable and accurate tax services to individuals and businesses. Our goal is to help our clients achieve their tax objectives while minimizing their tax liability.",
     },
     {
-        icon: featureIcon,
-        title: "Expert Team",
+        illustration: servicesIllustration,
+        badge: "Our Services",
+        badgeColor: "teal",
+        title: "Services",
         description:
-            "With years of experience and knowledge of the mortgage landscape, our consultants are equipped to provide advice that maximizes your financial opportunities.",
+            "We provide a variety of tax services, including tax preparation, tax planning, and tax resolution. We also offer consulting services to help our clients navigate complex tax issues. Our team of tax professionals has the knowledge and expertise needed to help our clients achieve their tax goals.",
     },
     {
-        icon: featureIcon,
-        title: "Access to a Wide Network",
+        illustration: processIllustration,
+        badge: "Our Process",
+        badgeColor: "orange",
+        title: "Process",
         description:
-            "We work with a broad range of lenders, giving you access to the best rates and terms available, whether you’re a first-time home buyer or looking to finance.",
-    },
-    {
-        icon: featureIcon,
-        title: "Long-Term Relationship",
-        description:
-            "We aim to build a lasting relationship by offering continuous support, whether it's a future mortgage renewal, refinance, or new home purchase.",
+            "We take a personalized approach to tax services, working closely with our clients to understand their unique needs and goals. We then develop a customized tax strategy tailored to their specific situation. Throughout the tax process, we keep our clients informed and provide ongoing support to ensure their compliance with tax laws and regulations.",
     },
 ];
 
 export const About = () => {
     return (
-        <div className="bg-white w-full min-h-screen flex flex-col">
+        <div className="bg-[#F8F8F7] w-full min-h-screen flex flex-col">
             <Navbar />
 
             <main className="flex-1 flex flex-col">
-                <section className="relative w-full h-auto mb-[60px] md:mb-[80px] lg:mb-[96px]">
+                {/* Hero Section - Redesigned */}
+                <section className="relative w-full h-auto overflow-hidden">
                     <img
                         className="absolute top-0 left-0 w-full h-full object-cover min-h-full"
                         alt="About hero background"
                         src={heroBg}
                     />
-                    <div className="absolute inset-0 bg-[#081a243b] opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#04343C]/90 to-[#0E5C66]/85" />
 
-                    <div className="relative z-10 py-[50px] sm:py-[60px] md:py-[70px] lg:py-[80px] max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
-                        <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[25px] lg:gap-[31px]">
-                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
+                    <div className="relative z-10 py-[60px] md:py-[80px] lg:py-[100px] max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
+                        <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[24px]">
+                            <div className="inline-block px-[20px] py-[10px] bg-[#F47A20]/20 backdrop-blur-sm rounded-full">
+                                <span className="[font-family:'Poppins',Helvetica] font-semibold text-[#F47A20] text-sm md:text-base uppercase tracking-wider">
+                                    About Us
+                                </span>
+                            </div>
+
+                            <h1 className="w-full max-w-[900px] [font-family:'Poppins',Helvetica] font-bold text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.15]">
                                 WealthWize Consulting Group
                             </h1>
 
-                            <p className="w-full max-w-[797px] [font-family:'Inter',Helvetica] font-normal text-white text-[14px] sm:text-[16px] md:text-[18px] lg:text-xl text-center tracking-[0] leading-[1.6] md:leading-[1.5] lg:leading-[25.5px]">
-                                Wealthwize Consulting Group is committed to helping individuals and businesses achieve financial success. Specializing in mortgage consulting, financial planning, and business strategy, we provide personalized solutions tailored to your unique needs. Our experienced team offers expert guidance with a focus on transparency, trust, and delivering results. At Wealthwize, your financial success is our priority.
+                            <p className="w-full max-w-[800px] [font-family:'Poppins',Helvetica] font-normal text-white/90 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[19px] text-center tracking-[0] leading-[1.6] px-[20px]">
+                                Simplifying taxes for individuals and businesses. Expert tax preparation, planning, and resolution services designed to help you achieve your tax objectives while minimizing liability.
                             </p>
+
+                            <div className="mt-[15px] flex flex-wrap gap-[12px] md:gap-[15px] justify-center">
+                                <div className="flex items-center gap-[10px] px-[18px] py-[10px] bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-300">
+                                    <img src={taxPrepIcon} alt="Tax Preparation" className="w-[20px] h-[20px]" />
+                                    <span className="[font-family:'Poppins',Helvetica] font-medium text-white text-sm md:text-base">
+                                        Tax Preparation
+                                    </span>
+                                </div>
+                                <div className="flex items-center gap-[10px] px-[18px] py-[10px] bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-300">
+                                    <img src={taxPlanningIcon} alt="Tax Planning" className="w-[20px] h-[20px]" />
+                                    <span className="[font-family:'Poppins',Helvetica] font-medium text-white text-sm md:text-base">
+                                        Tax Planning
+                                    </span>
+                                </div>
+                                <div className="flex items-center gap-[10px] px-[18px] py-[10px] bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-300">
+                                    <img src={taxResolutionIcon} alt="Tax Resolution" className="w-[20px] h-[20px]" />
+                                    <span className="[font-family:'Poppins',Helvetica] font-medium text-white text-sm md:text-base">
+                                        Tax Resolution
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <section className="w-full px-[20px] md:px-[40px] lg:px-[50px] mb-[60px] md:mb-[80px] lg:mb-[102px]">
-                    <div className="max-w-[1440px] mx-auto flex flex-col items-center">
-                        <h2 className="flex items-center justify-center [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px] transition-all duration-300 hover:scale-105">
-                            Why us
-                        </h2>
+                {/* Mission, Services, Process Section - Brand New Design */}
+                <section className="w-full bg-white py-[70px] md:py-[90px] lg:py-[110px]">
+                    <div className="max-w-[1300px] mx-auto px-[20px] md:px-[40px] lg:px-[60px]">
 
-                        <p className="max-w-[333px] flex items-center justify-center opacity-80 [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] mb-[40px] md:mb-[55px] lg:mb-[67px] transition-opacity duration-300 hover:opacity-100">
-                            Your Trusted Partner for Financial Growth and Success
-                        </p>
-
-                        <div className="flex flex-col lg:flex-row gap-[40px] md:gap-[60px] lg:gap-[82px] w-full max-w-[1162px] justify-center items-center">
-                            <img
-                                className="w-full lg:w-[540px] h-auto lg:h-[806px] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] object-cover transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
-                                alt="Why choose us"
-                                src={whyUsImg}
-                            />
-
-                            <div className="flex flex-col gap-[30px] md:gap-[25px] lg:gap-[23px] lg:pt-[9px]">
-                                {whyUsFeatures.map((feature, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex flex-col p-[20px] md:p-[24px] lg:p-[28px] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] transition-all duration-300 hover:bg-gradient-to-r hover:from-[#F47A20]/5 hover:to-[#0E5C66]/5 hover:shadow-lg hover:scale-[1.02] cursor-pointer group"
-                                        style={{ animationDelay: `${index * 100}ms` }}
-                                    >
-                                        <img
-                                            className="w-[40px] h-[44px] md:w-[45px] md:h-[50px] lg:w-[50px] lg:h-[55px] mb-[16px] md:mb-[18px] lg:mb-[21px] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-                                            alt="Group"
-                                            src={feature.icon}
-                                        />
-                                        <h3 className="flex items-center [font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[22px] md:text-[25px] lg:text-[28px] tracking-[0] leading-[normal] mb-[6px] transition-colors duration-300 group-hover:text-[#F47A20]">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="w-full max-w-[434px] opacity-65 [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[15px] md:text-[16px] lg:text-lg tracking-[0] leading-[normal] text-left transition-all duration-300 group-hover:opacity-80">
-                                            {feature.description}
-                                        </p>
+                        {/* Mission */}
+                        <div className="mb-[60px] md:mb-[80px]">
+                            <div className="flex flex-col lg:flex-row gap-[40px] md:gap-[50px] items-center">
+                                <div className="w-full lg:w-[45%]">
+                                    <div className={`inline-block px-[16px] py-[8px] ${aboutSections[0].badgeColor === 'orange' ? 'bg-[#F47A20]/10' : 'bg-[#0E5C66]/10'} rounded-full mb-[20px]`}>
+                                        <span className={`[font-family:'Poppins',Helvetica] font-semibold ${aboutSections[0].badgeColor === 'orange' ? 'text-[#F47A20]' : 'text-[#0E5C66]'} text-sm uppercase tracking-wide`}>
+                                            {aboutSections[0].badge}
+                                        </span>
                                     </div>
-                                ))}
+                                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[32px] md:text-[38px] lg:text-[42px] mb-[20px] leading-[1.2]">
+                                        {aboutSections[0].title}
+                                    </h2>
+                                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-[17px] lg:text-[18px] leading-[1.8]">
+                                        {aboutSections[0].description}
+                                    </p>
+                                </div>
+                                <div className="w-full lg:w-[55%] flex justify-center">
+                                    <img
+                                        className="w-full max-w-[400px] h-auto"
+                                        alt="Our Mission"
+                                        src={aboutSections[0].illustration}
+                                    />
+                                </div>
                             </div>
                         </div>
+
+                        {/* Services */}
+                        <div className="mb-[60px] md:mb-[80px]">
+                            <div className="flex flex-col lg:flex-row-reverse gap-[40px] md:gap-[50px] items-center">
+                                <div className="w-full lg:w-[45%]">
+                                    <div className={`inline-block px-[16px] py-[8px] ${aboutSections[1].badgeColor === 'orange' ? 'bg-[#F47A20]/10' : 'bg-[#0E5C66]/10'} rounded-full mb-[20px]`}>
+                                        <span className={`[font-family:'Poppins',Helvetica] font-semibold ${aboutSections[1].badgeColor === 'orange' ? 'text-[#F47A20]' : 'text-[#0E5C66]'} text-sm uppercase tracking-wide`}>
+                                            {aboutSections[1].badge}
+                                        </span>
+                                    </div>
+                                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[32px] md:text-[38px] lg:text-[42px] mb-[20px] leading-[1.2]">
+                                        {aboutSections[1].title}
+                                    </h2>
+                                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-[17px] lg:text-[18px] leading-[1.8]">
+                                        {aboutSections[1].description}
+                                    </p>
+                                </div>
+                                <div className="w-full lg:w-[55%] flex justify-center">
+                                    <img
+                                        className="w-full max-w-[400px] h-auto"
+                                        alt="Our Services"
+                                        src={aboutSections[1].illustration}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Process */}
+                        <div>
+                            <div className="flex flex-col lg:flex-row gap-[40px] md:gap-[50px] items-center">
+                                <div className="w-full lg:w-[45%]">
+                                    <div className={`inline-block px-[16px] py-[8px] ${aboutSections[2].badgeColor === 'orange' ? 'bg-[#F47A20]/10' : 'bg-[#0E5C66]/10'} rounded-full mb-[20px]`}>
+                                        <span className={`[font-family:'Poppins',Helvetica] font-semibold ${aboutSections[2].badgeColor === 'orange' ? 'text-[#F47A20]' : 'text-[#0E5C66]'} text-sm uppercase tracking-wide`}>
+                                            {aboutSections[2].badge}
+                                        </span>
+                                    </div>
+                                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[32px] md:text-[38px] lg:text-[42px] mb-[20px] leading-[1.2]">
+                                        {aboutSections[2].title}
+                                    </h2>
+                                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-[17px] lg:text-[18px] leading-[1.8]">
+                                        {aboutSections[2].description}
+                                    </p>
+                                </div>
+                                <div className="w-full lg:w-[55%] flex justify-center">
+                                    <img
+                                        className="w-full max-w-[400px] h-auto"
+                                        alt="Our Process"
+                                        src={aboutSections[2].illustration}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 

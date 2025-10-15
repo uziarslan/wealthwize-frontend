@@ -14,23 +14,23 @@ const contactInfo = [
   {
     icon: phone,
     title: "Phone",
-    detail: "11111111111111111",
+    detail: "+1 647 878 3371",
     detailOpacity: "opacity-80",
-    href: "tel:11111111111111111",
+    href: "tel:+16478783371",
   },
   {
     icon: email,
     title: "Email",
-    detail: "wealthwizeconsulting@gmail.com",
+    detail: "zain@wealthwize.pro",
     detailOpacity: "opacity-80",
-    href: "mailto:wealthwizeconsulting@gmail.com",
+    href: "mailto:zain@wealthwize.pro",
   },
   {
     icon: location,
     title: "Location",
-    detail: "wealthtwizeconsulting",
-    detailOpacity: "opacity-65",
-    href: "https://www.google.com/maps/search/?api=1&query=wealthtwizeconsulting",
+    detail: "320 Matheson Boulevard West, Suite 211, Mississauga, Ontario, L5R 0H2, Canada",
+    detailOpacity: "opacity-80",
+    href: null,
   },
 ];
 
@@ -103,50 +103,65 @@ export const ContactUs = () => {
   };
 
   return (
-    <div className="bg-white w-full min-h-screen flex flex-col">
+    <div className="bg-[#F8F8F7] w-full min-h-screen flex flex-col">
       <Navbar />
 
       <main className="flex-1 flex flex-col">
-        <section className="relative w-full pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[95px] px-[20px] md:px-[40px] lg:px-[60px]">
+        {/* Hero Section */}
+        <section className="relative w-full bg-gradient-to-br from-[#04343C] to-[#0E5C66] py-[80px] md:py-[100px] lg:py-[120px] px-[20px] md:px-[40px] lg:px-[60px]">
           <div className="max-w-[1440px] mx-auto text-center">
-            <h1 className="font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px] lg:mb-[28px]">
-              Contact Us
+            <h1 className="font-bold text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px]">
+              Get in Touch
             </h1>
+            <p className="max-w-[700px] mx-auto text-white/90 text-[16px] md:text-[18px] lg:text-xl [font-family:'Poppins',Helvetica] font-normal leading-[1.6]">
+              Have questions about our mortgage, financial, or business consulting services? We're here to help you achieve your financial goals.
+            </p>
           </div>
         </section>
 
-        <section className="relative w-full pb-[97px] px-[20px] md:px-[40px] lg:px-[60px]">
-          <div className="max-w-[1440px] mx-auto">
-            <div className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-[30px] md:gap-[60px] lg:gap-[100px] xl:gap-[170px]">
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.href}
-                  target={info.title === "Location" ? "_blank" : undefined}
-                  rel={info.title === "Location" ? "noopener noreferrer" : undefined}
-                  className="no-underline cursor-pointer"
-                >
-                  <Card className="flex flex-col items-center border-0 shadow-none bg-transparent transition-all duration-300 hover:scale-105 group">
-                    <CardContent className="flex flex-col items-center p-0">
-                      <div className="w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] bg-[#F47A20] bg-opacity-10 flex items-center justify-center mb-[20px] md:mb-[28px] lg:mb-[38px] transition-all duration-300 group-hover:bg-opacity-25 group-hover:shadow-lg">
-                        <img
-                          className="w-[38px] h-[38px] md:w-[46px] md:h-[46px] lg:w-[54px] lg:h-[54px] transition-transform duration-300 group-hover:scale-110"
-                          alt={info.title}
-                          src={info.icon}
-                        />
-                      </div>
-                      <h3 className="flex items-center justify-center [font-family:'Inter',Helvetica] font-bold text-[#04343C] text-[18px] md:text-[20px] lg:text-2xl text-center tracking-[0] leading-[normal] mb-[20px] md:mb-[28px] lg:mb-[38px] transition-colors duration-300 group-hover:text-[#F47A20]">
-                        {info.title}
-                      </h3>
-                      <p
-                        className={`flex items-center justify-center ${info.detailOpacity} [font-family:${info.title === "Phone" ? "'Inter'" : "'Poppins'"},Helvetica] font-medium text-[#5E6E73] text-[14px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 group-hover:opacity-100`}
-                      >
-                        {info.detail}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </a>
-              ))}
+        {/* Contact Information Cards */}
+        <section className="relative w-full py-[60px] md:py-[80px] lg:py-[100px] px-[20px] md:px-[40px] lg:px-[60px]">
+          <div className="max-w-[1200px] mx-auto">
+            <h2 className="text-center [font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[28px] md:text-[32px] lg:text-[36px] mb-[16px]">
+              Contact Information
+            </h2>
+            <p className="text-center [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg mb-[50px] md:mb-[60px] max-w-[600px] mx-auto">
+              Reach out to us through any of the following channels. Our team is ready to assist you.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] lg:gap-[40px]">
+              {contactInfo.map((info, index) => {
+                const CardWrapper = info.href ? 'a' : 'div';
+                const linkProps = info.href ? {
+                  href: info.href,
+                  className: "no-underline block"
+                } : {
+                  className: "block"
+                };
+
+                return (
+                  <CardWrapper key={index} {...linkProps}>
+                    <Card className="relative h-full border-2 border-transparent bg-white shadow-md hover:shadow-xl hover:border-[#F47A20] rounded-[20px] transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F47A20] to-[#0E5C66]"></div>
+                      <CardContent className="flex flex-col items-center p-[30px] md:p-[35px] lg:p-[40px]">
+                        <div className="w-[80px] h-[80px] md:w-[90px] md:h-[90px] rounded-[20px] bg-gradient-to-br from-[#F47A20]/10 to-[#0E5C66]/10 flex items-center justify-center mb-[24px] md:mb-[28px] transition-all duration-300 group-hover:from-[#F47A20]/20 group-hover:to-[#0E5C66]/20 group-hover:scale-110">
+                          <img
+                            className="w-[45px] h-[45px] md:w-[50px] md:h-[50px] transition-transform duration-300 group-hover:scale-110"
+                            alt={info.title}
+                            src={info.icon}
+                          />
+                        </div>
+                        <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[20px] md:text-[22px] lg:text-2xl text-center mb-[16px] md:mb-[20px] transition-colors duration-300 group-hover:text-[#F47A20]">
+                          {info.title}
+                        </h3>
+                        <p className={`[font-family:'Poppins',Helvetica] font-medium text-[#5E6E73] text-[15px] md:text-[16px] lg:text-[17px] text-center leading-[1.6] transition-all duration-300 group-hover:text-[#04343C] ${info.detailOpacity}`}>
+                          {info.detail}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </CardWrapper>
+                );
+              })}
             </div>
           </div>
         </section>

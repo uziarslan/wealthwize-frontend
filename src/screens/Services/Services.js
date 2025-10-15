@@ -1,162 +1,159 @@
 import React from "react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
-import { Card, CardContent } from "../../components/ui/card";
+import { Button } from "../../components/ui/button";
 import heroBg from "../../assets/about-hero-bg.jpg";
 import mortgageImg from "../../assets/mortgage-consulting.png";
 import financialImg from "../../assets/financial-consulting.png";
 import businessImg from "../../assets/business-consulting.png";
-
-// Corporate style link-button with no background/decoration, simple text + arrow
-const ContactExpertButton = () => (
-    <a
-        href="/contact"
-        className="
-            mt-4
-            inline-flex
-            items-center
-            gap-1.5
-            text-[#0E5C66]
-            text-sm
-            font-semibold
-            [font-family:'Poppins',Helvetica]
-            border-0
-            shadow-none
-            bg-transparent
-            transition-colors
-            duration-150
-            hover:text-[#F47A20]
-            focus:outline-none
-            focus-visible:underline
-            no-underline
-            cursor-pointer
-            uppercase
-            tracking-wide
-            p-0
-        "
-        tabIndex={0}
-        aria-label="Contact an Expert"
-        style={{
-            background: "none",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-            textDecoration: "none",
-            color: "#0E5C66" // Light Teal
-        }}
-    >
-        Contact an Expert
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-[14px] h-[14px]"
-            fill="none"
-            viewBox="0 0 20 20"
-            stroke="currentColor"
-            strokeWidth={2}
-        >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 10h10m0 0l-4-4m4 4l-4 4" />
-        </svg>
-    </a>
-);
+import taxReturn from "../../assets/taxreturn.webp";
+import payroll from "../../assets/payroll.webp";
+import arAp from "../../assets/arap.webp";
 
 const services = [
     {
         image: mortgageImg,
-        title: "Mortgage consulting",
+        title: "Financial Reporting",
         description:
-            "Getting a mortgage is a necessary part of buying a home, it can be difficult to understand what you’re paying for and what you can actually afford. We can help you navigate this process.",
-        chips: ["First Time Buyer", "Second Mortgage", "Refinancing"],
+            "We provide timely and detailed financial reports—monthly, quarterly, or semi-annually—based on your selected package. Our reports offer the insight you need to make confident, informed decisions about your business and help you navigate this process.",
+        chips: ["Balance Sheets", "Income Statements", "Cash Flow Reports"],
     },
     {
         image: financialImg,
-        title: "Financial consulting",
+        title: "Tax Filing",
         description:
-            "Our team communicates and coordinates financing arrangements with banks and private lenders to make the lending process efficient for our clients.",
+            "Stay compliant and stress-free with Lumena’s tax filing services. We manage corporate tax returns, GST/HST filing, and personal tax filing for directors and their families—ensuring everything is filed accurately and on time.",
+        chips: ["Corporate Tax", "GST/HST Returns", "Personal Tax"],
     },
     {
         image: businessImg,
-        title: "Business consulting",
+        title: "Bookkeeping",
         description:
-            "As business consultants we have created and continue to maintain a reputation for providing quality and reliable solutions for our clients including.",
-        chips: ["Business Loans", "Business Line of Credit", "Business Registration"],
+            "Our bookkeeping services are tailored for businesses at every stage, from startups to growing enterprises. We handle transaction tracking, monthly bank reconciliations, and accurate financial reporting to keep your books in order and your mind at ease.",
+        chips: ["Bank Reconciliation", "Transaction Recording", "Financial Statements"],
+    },
+    {
+        image: taxReturn,
+        title: "U.S. Canadian Personal Tax Returns",
+        description:
+            "We assist Canadian individuals working or doing business in the U.S., and U.S. citizens living or working in Canada, with tax compliance and cross-border filing requirements. Our team ensures individuals are compliant with both Canadian and U.S. tax laws.",
+        chips: ["Cross-Border Tax", "Canadian Tax", "U.S. Tax Compliance"],
+    },
+    {
+        image: payroll,
+        title: "Payroll",
+        description:
+            "Managing payroll can be time-consuming and complex. Our payroll services handle everything from calculating employee wages and deductions, payroll auditing, to processing payments—so you can focus on running your business smoothly.",
+        chips: ["Payroll Calculations", "Deductions", "Payroll Auditing"],
+    },
+    {
+        image: arAp,
+        title: "AR/AP Management",
+        description:
+            "Our AR/AP management services streamline your accounts receivable and payable processes, helping you track outstanding invoices and manage payments efficiently.",
+        chips: ["Receivables Tracking", "Payables Management", "Invoice Processing"],
     },
 ];
 
-const Chips = ({ chips }) => (
-    <div className="flex flex-wrap justify-center gap-2 mt-4 mb-1">
-        {chips.map((chip, idx) => (
-            <span
-                key={idx}
-                className="px-3 py-1 rounded-full bg-[#F8F8F7] text-[#04343C] text-xs font-semibold border border-[#F47A20] [font-family:'Poppins',Helvetica]"
-            >
-                {chip}
-            </span>
-        ))}
-    </div>
-);
-
 export const Services = () => {
     return (
-        <div className="bg-white w-full min-h-screen flex flex-col">
+        <div className="bg-[#F8F8F7] w-full min-h-screen flex flex-col">
             <Navbar />
 
             <main className="flex-1 flex flex-col">
-                <section className="relative w-full h-auto min-h-[467px] mb-[60px] md:mb-[80px] lg:mb-[96px] flex items-center">
+                {/* Hero Section - Redesigned */}
+                <section className="relative w-full overflow-hidden">
                     <img
                         className="absolute top-0 left-0 w-full h-full object-cover min-h-full"
                         alt="Our Services hero background"
                         src={heroBg}
                     />
-                    <div className="absolute inset-0 bg-[#081a243b] opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#04343C]/90 to-[#0E5C66]/85" />
 
-                    <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[50px] md:py-[60px]">
-                        <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[25px] lg:gap-[31px]">
-                            <h1 className="w-full max-w-[700px] [font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.2] sm:leading-[1.15] md:leading-[1.1] lg:leading-[1.1]">
+                    <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[60px] py-[70px] md:py-[90px] lg:py-[110px]">
+                        <div className="flex flex-col items-center justify-center gap-[20px] md:gap-[24px]">
+                            <div className="inline-block px-[20px] py-[10px] bg-[#F47A20]/20 backdrop-blur-sm rounded-full">
+                                <span className="[font-family:'Poppins',Helvetica] font-semibold text-[#F47A20] text-sm md:text-base uppercase tracking-wider">
+                                    What We Offer
+                                </span>
+                            </div>
+
+                            <h1 className="w-full max-w-[900px] [font-family:'Poppins',Helvetica] font-bold text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center tracking-[-0.02em] leading-[1.15]">
                                 Our Services
                             </h1>
-                            <p className="w-full max-w-[797px] [font-family:'Inter',Helvetica] font-normal text-white text-[14px] sm:text-[16px] md:text-[18px] lg:text-xl text-center tracking-[0] leading-[1.6] md:leading-[1.5] lg:leading-[25.5px]">
-                                Loreum ipsum text is a dummy text
+
+                            <p className="w-full max-w-[750px] [font-family:'Poppins',Helvetica] font-normal text-white/90 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[19px] text-center tracking-[0] leading-[1.6] px-[20px]">
+                                Comprehensive tax solutions tailored to your needs. From preparation to planning and resolution, we provide expert guidance every step of the way.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section className="flex flex-col items-center w-full max-w-[1440px] mx-auto px-[20px] md:px-[40px] lg:px-[50px] mb-[60px] md:mb-[80px] lg:mb-[104px]">
-                    <h2 className="[font-family:'Poppins',Helvetica] font-bold text-[#F47A20] text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal] mb-[8px] md:mb-[10px]">
-                        Services We Provide
-                    </h2>
-                    <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg text-center tracking-[0] leading-[normal] opacity-80 mb-[40px] md:mb-[55px] lg:mb-[77px]">
-                        Covered in these areas
-                    </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-[35px] lg:gap-[42px] w-full max-w-[1329px] mb-[40px] md:mb-[55px] lg:mb-[69px]">
-                        {services.map((service, index) => (
-                            <Card
-                                key={index}
-                                className="flex flex-col items-center border-0 shadow-none bg-transparent transition-all duration-300 hover:scale-105 group cursor-pointer"
-                            >
-                                <CardContent className="flex flex-col items-center p-0">
-                                    <div className="w-full max-w-[378px] h-[300px] sm:h-[350px] md:h-[380px] lg:h-[424px] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] overflow-hidden mb-[30px] md:mb-[40px] lg:mb-[51px]">
-                                        <img
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                            alt={service.title}
-                                            src={service.image}
-                                        />
+                {/* Services Grid - Fresh Modern Design */}
+                <section className="w-full px-[20px] md:px-[40px] lg:px-[60px] py-[70px] md:py-[90px] lg:py-[110px]">
+                    <div className="max-w-[1400px] mx-auto">
+                        <div className="space-y-[50px] md:space-y-[60px] lg:space-y-[70px]">
+                            {services.map((service, index) => (
+                                <div
+                                    key={index}
+                                    className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-[35px] md:gap-[45px] lg:gap-[55px] items-center`}
+                                >
+                                    {/* Image Side */}
+                                    <div className="w-full lg:w-[50%]">
+                                        <div className="relative rounded-[20px] overflow-hidden shadow-lg group/img">
+                                            <img
+                                                className="w-full h-[320px] md:h-[380px] lg:h-[420px] object-cover transition-transform duration-700 group-hover/img:scale-105"
+                                                alt={service.title}
+                                                src={service.image}
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#04343C]/50 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500"></div>
+                                        </div>
                                     </div>
-                                    <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[22px] md:text-[25px] lg:text-[28px] text-center tracking-[0] leading-[normal] mb-[16px] md:mb-[20px] lg:mb-[26px] transition-colors duration-300 group-hover:text-[#F47A20]">
-                                        {service.title}
-                                    </h3>
-                                    <p className="w-full max-w-[352px] [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[15px] md:text-[16px] lg:text-lg text-center tracking-[0] leading-[normal] opacity-65 transition-opacity duration-300 group-hover:opacity-80">
-                                        {service.description}
-                                    </p>
-                                    {service.chips && Array.isArray(service.chips) && service.chips.length > 0 && (
-                                        <>
-                                            <Chips chips={service.chips} />
-                                        </>
-                                    )}
-                                    <ContactExpertButton />
-                                </CardContent>
-                            </Card>
-                        ))}
+
+                                    {/* Content Side */}
+                                    <div className="w-full lg:w-[50%]">
+                                        <div className="inline-block px-[14px] py-[6px] bg-[#F47A20]/10 rounded-full mb-[18px]">
+                                            <span className="[font-family:'Poppins',Helvetica] font-medium text-[#F47A20] text-xs uppercase tracking-wider">
+                                                Service {index + 1}
+                                            </span>
+                                        </div>
+
+                                        <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[26px] md:text-[32px] lg:text-[36px] mb-[18px] leading-[1.3]">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="[font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[15px] md:text-[16px] lg:text-[17px] leading-[1.8] mb-[24px]">
+                                            {service.description}
+                                        </p>
+
+                                        {/* Chips/Tags */}
+                                        {service.chips && service.chips.length > 0 && (
+                                            <div className="flex flex-wrap gap-[10px] mb-[28px]">
+                                                {service.chips.map((chip, idx) => (
+                                                    <div
+                                                        key={idx}
+                                                        className="flex items-center gap-[6px] px-[14px] py-[8px] bg-white border border-[#E5E5E5] rounded-[8px] hover:border-[#F47A20] transition-all duration-300"
+                                                    >
+                                                        <div className="w-[6px] h-[6px] rounded-full bg-[#F47A20]"></div>
+                                                        <span className="[font-family:'Poppins',Helvetica] font-medium text-[#04343C] text-[13px]">
+                                                            {chip}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {/* CTA Button */}
+                                        <Button
+                                            onClick={() => window.location.href = '/contact'}
+                                            className="bg-[#F47A20] hover:bg-[#0E5C66] text-white px-[28px] py-[12px] h-auto rounded-[10px] [font-family:'Poppins',Helvetica] font-semibold text-[15px] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                        >
+                                            Learn More
+                                        </Button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </section>
             </main>

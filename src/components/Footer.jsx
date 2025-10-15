@@ -74,7 +74,7 @@ export const Footer = () => {
           <img
             src={logoTrans}
             alt="WealthWize Consulting Group"
-            className="h-[60px] md:h-[80px] lg:h-[100px] w-auto object-contain cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-90"
+            className="h-[100px] md:h-[130px] lg:h-[160px] w-auto object-contain cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-90"
             onClick={() => navigate("/")}
           />
         </div>
