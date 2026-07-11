@@ -29,21 +29,50 @@ export const CallbackSection = () => {
     });
   };
 
-  const handleRequestCallback = () => {
-    if (callbackEmail) {
-      console.log("Request callback with email:", callbackEmail);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleRequestCallback = async () => {
+    if (!callbackEmail) {
+      showModal(
+        "Email Required",
+        "Please enter your email address so we can call you back.",
+        "error"
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "Callback Request",
+          email: callbackEmail,
+          subject: "New Callback Request",
+          message: `Visitor ${callbackEmail} requested a call back via the homepage.`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
       showModal(
         "Request Received!",
         `Thank you! We'll call you back at ${callbackEmail} within 1-2 business days.`,
         "success"
       );
       setCallbackEmail("");
-    } else {
+    } catch (error) {
       showModal(
-        "Email Required",
-        "Please enter your email address so we can call you back.",
+        "Something Went Wrong",
+        "We couldn't submit your request. Please try again, or email us directly.",
         "error"
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -89,8 +118,9 @@ export const CallbackSection = () => {
 
               <Button
                 onClick={handleRequestCallback}
+                disabled={isSubmitting}
                 variant="ghost"
-                className="absolute top-[22px] sm:top-[27px] md:top-[35px] right-[20px] sm:right-[25px] md:right-[40px] w-[20px] sm:w-[22px] md:w-[25px] h-[12px] sm:h-[14px] md:h-[15px] p-0 hover:bg-transparent transition-all duration-200 hover:scale-125 hover:rotate-12 active:scale-95"
+                className="absolute top-[22px] sm:top-[27px] md:top-[35px] right-[20px] sm:right-[25px] md:right-[40px] w-[20px] sm:w-[22px] md:w-[25px] h-[12px] sm:h-[14px] md:h-[15px] p-0 hover:bg-transparent transition-all duration-200 hover:scale-125 hover:rotate-12 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <img
                   className="w-full h-full drop-shadow-lg"

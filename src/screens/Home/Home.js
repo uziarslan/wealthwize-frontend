@@ -59,22 +59,50 @@ export const Home = () => {
     });
   };
 
-  const handleGetStarted = () => {
-    if (email) {
-      console.log("Get Started with email:", email);
-      // Add your form submission logic here
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleGetStarted = async () => {
+    if (!email) {
+      showModal(
+        "Email Required",
+        "Please enter your email address to get started.",
+        "error"
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "Get Started",
+          email,
+          subject: "New Lead — Get Started",
+          message: `Visitor ${email} submitted the Get Started form on the homepage.`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
       showModal(
         "Success!",
         `Thank you for your interest! We'll contact you at ${email} shortly.`,
         "success"
       );
       setEmail("");
-    } else {
+    } catch (error) {
       showModal(
-        "Email Required",
-        "Please enter your email address to get started.",
+        "Something Went Wrong",
+        "We couldn't submit your request. Please try again, or email us directly.",
         "error"
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -121,9 +149,10 @@ export const Home = () => {
 
               <Button
                 onClick={handleGetStarted}
-                className="absolute top-[6px] right-[6px] w-[130px] sm:w-[150px] md:w-[180px] h-[58px] sm:h-[63px] md:h-[68px] rounded-[10px] bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-semibold text-white text-[14px] sm:text-[15px] md:text-[16px] transition-all duration-300 hover:shadow-xl"
+                disabled={isSubmitting}
+                className="absolute top-[6px] right-[6px] w-[130px] sm:w-[150px] md:w-[180px] h-[58px] sm:h-[63px] md:h-[68px] rounded-[10px] bg-[#F47A20] hover:bg-[#0E5C66] [font-family:'Poppins',Helvetica] font-semibold text-white text-[14px] sm:text-[15px] md:text-[16px] transition-all duration-300 hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Get Started
+                {isSubmitting ? "Sending..." : "Get Started"}
               </Button>
             </div>
           </div>

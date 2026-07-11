@@ -17,11 +17,12 @@ module.exports = async (req, res) => {
     return res.status(405).json({ ok: false, error: "Method not allowed." });
   }
 
-  const { fullName, email, subject, message } = req.body || {};
+  const { source, fullName, email, subject, message } = req.body || {};
 
-  // Validate before sending anything.
-  if (!fullName || !email || !subject || !message) {
-    return res.status(400).json({ ok: false, error: "All fields are required." });
+  // Email is the only field every form collects, so it's the one
+  // hard requirement. The rest are optional (lead forms send only email).
+  if (!email) {
+    return res.status(400).json({ ok: false, error: "Email is required." });
   }
 
   try {
@@ -34,9 +35,16 @@ module.exports = async (req, res) => {
       // supplied by the visitor.
       to: [{ email: process.env.CONTACT_RECIPIENT_EMAIL }],
       // Let the business reply straight to the visitor.
-      reply_to: { email, name: fullName },
+      reply_to: { email, name: fullName || source || "Website Lead" },
       template_uuid: process.env.MAILTRAP_TEMPLATE_UUID,
-      template_variables: { fullName, email, subject, message },
+      // The single template adapts to whichever fields are present.
+      template_variables: {
+        source: source || "Website",
+        fullName: fullName || "",
+        email,
+        subject: subject || "",
+        message: message || "",
+      },
     });
 
     return res.status(200).json({ ok: true });
