@@ -73,7 +73,9 @@ export const ContactUs = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
@@ -85,21 +87,41 @@ export const ContactUs = () => {
       return;
     }
 
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
-    showModal(
-      "Message Sent!",
-      "Thank you for contacting us. We'll get back to you within 1-2 business days.",
-      "success"
-    );
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      showModal(
+        "Message Sent!",
+        "Thank you for contacting us. We'll get back to you within 1-2 business days.",
+        "success"
+      );
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      showModal(
+        "Something Went Wrong",
+        "We couldn't send your message. Please try again, or email us directly.",
+        "error"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -231,9 +253,10 @@ export const ContactUs = () => {
 
                 <Button
                   type="submit"
-                  className="h-[50px] md:h-[55px] lg:h-[60px] border border-solid border-white bg-[#F47A20] hover:bg-[#0E5C66] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] [font-family:'Poppins',Helvetica] font-medium text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95"
+                  disabled={isSubmitting}
+                  className="h-[50px] md:h-[55px] lg:h-[60px] border border-solid border-white bg-[#F47A20] hover:bg-[#0E5C66] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] [font-family:'Poppins',Helvetica] font-medium text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Submit
+                  {isSubmitting ? "Sending..." : "Submit"}
                 </Button>
               </form>
             </div>
