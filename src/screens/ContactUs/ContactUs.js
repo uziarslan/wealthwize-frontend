@@ -1,37 +1,71 @@
 import React, { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  Clock3,
+  FileCheck2,
+  Mail,
+  MapPin,
+  MessageSquareText,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { Modal } from "../../components/ui/modal";
 import { Button } from "../../components/ui/button";
-import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
-import phone from "../../assets/phone.svg";
-import email from "../../assets/email.svg";
-import location from "../../assets/location.svg";
 
-const contactInfo = [
+const contactMethods = [
   {
-    icon: phone,
-    title: "Phone",
+    icon: Phone,
+    label: "Call us",
     detail: "+1 647 878 3371",
-    detailOpacity: "opacity-80",
+    note: "Speak directly with our team",
     href: "tel:+16478783371",
   },
   {
-    icon: email,
-    title: "Email",
+    icon: Mail,
+    label: "Email us",
     detail: "zain@wealthwize.pro",
-    detailOpacity: "opacity-80",
+    note: "Send your question anytime",
     href: "mailto:zain@wealthwize.pro",
   },
   {
-    icon: location,
-    title: "Location",
-    detail: "320 Matheson Boulevard West, Suite 211, Mississauga, Ontario, L5R 0H2, Canada",
-    detailOpacity: "opacity-80",
-    href: null,
+    icon: MapPin,
+    label: "Visit our office",
+    detail: "320 Matheson Boulevard West, Suite 211",
+    note: "Mississauga, Ontario L5R 0H2",
+    href: "https://www.google.com/maps/search/?api=1&query=320+Matheson+Boulevard+West+Suite+211+Mississauga+Ontario+L5R+0H2",
   },
+];
+
+const conversationSteps = [
+  {
+    number: "01",
+    title: "Share the context",
+    detail: "Tell us what you’re responsible for and where you need clarity.",
+  },
+  {
+    number: "02",
+    title: "We review the need",
+    detail: "We’ll identify the relevant service, requirements, and practical next step.",
+  },
+  {
+    number: "03",
+    title: "Move forward clearly",
+    detail: "You’ll know what is involved, what comes next, and how we can help.",
+  },
+];
+
+const serviceNeeds = [
+  "Financial reporting",
+  "Tax filing",
+  "Bookkeeping",
+  "Canada–U.S. personal tax",
+  "Payroll",
+  "AR/AP management",
 ];
 
 export const ContactUs = () => {
@@ -41,7 +75,7 @@ export const ContactUs = () => {
     subject: "",
     message: "",
   });
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalState, setModalState] = useState({
     isOpen: false,
     title: "",
@@ -50,33 +84,20 @@ export const ContactUs = () => {
   });
 
   const showModal = (title, message, type = "success") => {
-    setModalState({
-      isOpen: true,
-      title,
-      message,
-      type,
-    });
+    setModalState({ isOpen: true, title, message, type });
   };
 
   const closeModal = () => {
-    setModalState({
-      ...modalState,
-      isOpen: false,
-    });
+    setModalState((current) => ({ ...current, isOpen: false }));
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
       showModal(
@@ -105,14 +126,7 @@ export const ContactUs = () => {
         "Thank you for contacting us. We'll get back to you within 1-2 business days.",
         "success"
       );
-
-      // Reset form
-      setFormData({
-        fullName: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+      setFormData({ fullName: "", email: "", subject: "", message: "" });
     } catch (error) {
       showModal(
         "Something Went Wrong",
@@ -125,140 +139,290 @@ export const ContactUs = () => {
   };
 
   return (
-    <div className="bg-[#F8F8F7] w-full min-h-screen flex flex-col">
+    <div className="min-h-screen w-full bg-[#F8F8F7] text-[#04343C]">
       <Navbar />
 
-      <main className="flex-1 flex flex-col">
-        {/* Hero Section */}
-        <section className="relative w-full bg-gradient-to-br from-[#04343C] to-[#0E5C66] py-[80px] md:py-[100px] lg:py-[120px] px-[20px] md:px-[40px] lg:px-[60px]">
-          <div className="max-w-[1440px] mx-auto text-center">
-            <h1 className="font-bold text-white text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] xl:text-[72px] text-center leading-[1.2] sm:leading-[1.15] md:leading-[1.1] [font-family:'Poppins',Helvetica] tracking-[-0.02em] mb-[20px] md:mb-[24px]">
-              Get in Touch
-            </h1>
-            <p className="max-w-[700px] mx-auto text-white/90 text-[16px] md:text-[18px] lg:text-xl [font-family:'Poppins',Helvetica] font-normal leading-[1.6]">
-              Have questions about our mortgage, financial, or business consulting services? We're here to help you achieve your financial goals.
-            </p>
-          </div>
-        </section>
+      <main>
+        <section className="relative overflow-hidden bg-[#04343C] lg:h-[clamp(440px,calc(100svh-222px),520px)]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,.65) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.65) 1px, transparent 1px)",
+              backgroundSize: "72px 72px",
+            }}
+          />
+          <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#0E5C66] blur-3xl" />
+          <div aria-hidden="true" className="absolute -bottom-24 left-[38%] h-56 w-56 rounded-full bg-[#F47A20]/10 blur-3xl" />
 
-        {/* Contact Information Cards */}
-        <section className="relative w-full py-[60px] md:py-[80px] lg:py-[100px] px-[20px] md:px-[40px] lg:px-[60px]">
-          <div className="max-w-[1200px] mx-auto">
-            <h2 className="text-center [font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[28px] md:text-[32px] lg:text-[36px] mb-[16px]">
-              Contact Information
-            </h2>
-            <p className="text-center [font-family:'Poppins',Helvetica] font-normal text-[#5E6E73] text-[16px] md:text-lg mb-[50px] md:mb-[60px] max-w-[600px] mx-auto">
-              Reach out to us through any of the following channels. Our team is ready to assist you.
-            </p>
+          <div className="relative mx-auto grid h-full max-w-[1440px] items-center gap-10 px-5 py-14 md:px-10 lg:grid-cols-[1fr_0.9fr] lg:px-[60px] lg:py-10">
+            <div className="max-w-[670px]">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-8 bg-[#F47A20]" />
+                <span className="font-manrope text-[12px] font-bold uppercase tracking-[0.2em] text-[#F47A20]">
+                  Contact
+                </span>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] lg:gap-[40px]">
-              {contactInfo.map((info, index) => {
-                const CardWrapper = info.href ? 'a' : 'div';
-                const linkProps = info.href ? {
-                  href: info.href,
-                  className: "no-underline block"
-                } : {
-                  className: "block"
-                };
+              <h1 className="font-manrope text-[40px] font-extrabold leading-[1.04] tracking-[-0.045em] text-white sm:text-[48px] lg:text-[58px]">
+                A clearer conversation starts here.
+              </h1>
 
-                return (
-                  <CardWrapper key={index} {...linkProps}>
-                    <Card className="relative h-full border-2 border-transparent bg-white shadow-md hover:shadow-xl hover:border-[#F47A20] rounded-[20px] transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F47A20] to-[#0E5C66]"></div>
-                      <CardContent className="flex flex-col items-center p-[30px] md:p-[35px] lg:p-[40px]">
-                        <div className="w-[80px] h-[80px] md:w-[90px] md:h-[90px] rounded-[20px] bg-gradient-to-br from-[#F47A20]/10 to-[#0E5C66]/10 flex items-center justify-center mb-[24px] md:mb-[28px] transition-all duration-300 group-hover:from-[#F47A20]/20 group-hover:to-[#0E5C66]/20 group-hover:scale-110">
-                          <img
-                            className="w-[45px] h-[45px] md:w-[50px] md:h-[50px] transition-transform duration-300 group-hover:scale-110"
-                            alt={info.title}
-                            src={info.icon}
-                          />
-                        </div>
-                        <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#04343C] text-[20px] md:text-[22px] lg:text-2xl text-center mb-[16px] md:mb-[20px] transition-colors duration-300 group-hover:text-[#F47A20]">
-                          {info.title}
-                        </h3>
-                        <p className={`[font-family:'Poppins',Helvetica] font-medium text-[#5E6E73] text-[15px] md:text-[16px] lg:text-[17px] text-center leading-[1.6] transition-all duration-300 group-hover:text-[#04343C] ${info.detailOpacity}`}>
-                          {info.detail}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </CardWrapper>
-                );
-              })}
+              <p className="mt-5 max-w-[610px] font-manrope text-[15px] leading-[1.75] text-white/70 md:text-[17px]">
+                Tell us what needs attention—whether it’s a filing deadline, day-to-day financial work, or a bigger question about where you stand.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  href="#contact-form"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#F47A20] px-6 py-3 font-manrope text-[14px] font-bold text-white transition duration-300 hover:bg-white hover:text-[#04343C]"
+                >
+                  Send a message
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+                <div className="flex items-center gap-2 font-manrope text-[12px] font-semibold text-white/60">
+                  <Clock3 className="h-4 w-4 text-[#F47A20]" />
+                  Replies within 1–2 business days
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden justify-self-end lg:block lg:w-full lg:max-w-[530px]">
+              <div className="rounded-[24px] border border-white/15 bg-white/[0.07] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-md">
+                <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <MessageSquareText className="h-4 w-4 text-[#F47A20]" />
+                    <span className="font-manrope text-[12px] font-bold uppercase tracking-[0.16em] text-white/80">
+                      A useful first conversation
+                    </span>
+                  </div>
+                  <span className="rounded-full bg-[#F47A20]/15 px-3 py-1 font-manrope text-[10px] font-bold uppercase tracking-[0.12em] text-[#F6A05F]">
+                    Simple
+                  </span>
+                </div>
+
+                <div className="space-y-2 p-2 pt-3">
+                  {conversationSteps.map((step) => (
+                    <div
+                      key={step.number}
+                      className="grid grid-cols-[40px_1fr] gap-3 rounded-[15px] border border-white/10 bg-[#032B32]/65 p-3.5"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 font-manrope text-[11px] font-extrabold text-[#F6A05F]">
+                        {step.number}
+                      </div>
+                      <div>
+                        <p className="font-manrope text-[14px] font-bold text-white">{step.title}</p>
+                        <p className="mt-1 font-manrope text-[11px] leading-[1.5] text-white/45">{step.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="w-full pb-[60px] md:pb-[80px] lg:pb-[100px] px-[20px] md:px-[40px] lg:px-[60px]">
-          <div className="max-w-[1340px] mx-auto bg-[#04343C] rounded-[20px] md:rounded-[25px] lg:rounded-[30px] relative overflow-hidden">
-            <div
-              className="absolute inset-0 opacity-90 animate-gradient-slow"
-              style={{
-                background: 'linear-gradient(225deg, rgba(244,122,32,1) 0%, rgba(14,92,102,1) 50%, rgba(244,122,32,1) 100%)',
-                backgroundSize: '200% 200%',
-              }}
-            />
+        <section className="border-b border-[#04343C]/10 bg-white">
+          <div className="mx-auto grid max-w-[1440px] md:grid-cols-3 md:px-10 lg:px-[60px]">
+            {contactMethods.map((method, index) => {
+              const Icon = method.icon;
+              const isExternal = method.href.startsWith("http");
 
-            <div className="relative px-[20px] md:px-[40px] lg:px-[60px] py-[60px] md:py-[80px] lg:py-[100px]">
-              <header className="flex flex-col gap-[3px] items-center mb-[40px] md:mb-[52px] lg:mb-[64px]">
-                <h2 className="[font-family:'Poppins',Helvetica] font-bold text-white text-[32px] sm:text-[36px] md:text-[42px] lg:text-5xl text-center tracking-[0] leading-[normal]">
-                  Leave Us Your Info
-                </h2>
-                <p className="opacity-80 [font-family:'Poppins',Helvetica] font-normal text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal]">
-                  and we will get back to you.
-                </p>
-              </header>
-
-              <form onSubmit={handleSubmit} className="max-w-[960px] mx-auto flex flex-col gap-[16px] md:gap-[18px] lg:gap-[20px]">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[18px] lg:gap-[20px]">
-                  <div className="relative">
-                    <Input
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      placeholder="Full name"
-                      className="h-[50px] md:h-[55px] lg:h-[60px] bg-[#ffffff4c] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] border-0 [font-family:'Poppins',Helvetica] font-medium text-white text-[14px] md:text-[15px] lg:text-base tracking-[0] leading-[normal] placeholder:text-white placeholder:opacity-80 px-[20px] md:px-[24px] lg:px-[28px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                  </div>
-                  <div className="relative">
-                    <Input
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="E-mail"
-                      type="email"
-                      className="h-[50px] md:h-[55px] lg:h-[60px] bg-[#ffffff4c] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] border-0 [font-family:'Poppins',Helvetica] font-medium text-white text-[14px] md:text-[15px] lg:text-base tracking-[0] leading-[normal] placeholder:text-white placeholder:opacity-80 px-[20px] md:px-[24px] lg:px-[28px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                    />
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <Input
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="Subject"
-                    className="h-[50px] md:h-[55px] lg:h-[60px] bg-[#ffffff4c] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] border-0 [font-family:'Poppins',Helvetica] font-medium text-white text-[14px] md:text-[15px] lg:text-base tracking-[0] leading-[normal] placeholder:text-white placeholder:opacity-80 px-[20px] md:px-[24px] lg:px-[28px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                  />
-                </div>
-
-                <div className="relative">
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Message"
-                    className="h-[120px] md:h-[140px] lg:h-[160px] bg-[#ffffff4c] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] border-0 [font-family:'Poppins',Helvetica] font-medium text-white text-[14px] md:text-[15px] lg:text-base tracking-[0] leading-[normal] placeholder:text-white placeholder:opacity-80 px-[20px] md:px-[24px] lg:px-[28px] py-[16px] md:py-[18px] lg:py-[20px] resize-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="h-[50px] md:h-[55px] lg:h-[60px] border border-solid border-white bg-[#F47A20] hover:bg-[#0E5C66] rounded-[16px] md:rounded-[18px] lg:rounded-[20px] backdrop-blur-md backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12px)_brightness(100%)] [font-family:'Poppins',Helvetica] font-medium text-white text-[16px] md:text-[17px] lg:text-lg text-center tracking-[0] leading-[normal] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+              return (
+                <a
+                  key={method.label}
+                  href={method.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                  className={`group px-5 py-7 transition duration-300 hover:bg-[#F8F8F7] md:px-7 ${
+                    index > 0 ? "border-t border-[#04343C]/10 md:border-l md:border-t-0" : ""
+                  }`}
                 >
-                  {isSubmitting ? "Sending..." : "Submit"}
-                </Button>
-              </form>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EAF0EF] transition duration-300 group-hover:bg-[#04343C]">
+                      <Icon className="h-4 w-4 text-[#F47A20]" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <p className="font-manrope text-[10px] font-bold uppercase tracking-[0.14em] text-[#F47A20]">
+                        {method.label}
+                      </p>
+                      <p className="mt-1 font-manrope text-[13px] font-extrabold leading-[1.45] text-[#04343C] lg:text-[14px]">
+                        {method.detail}
+                      </p>
+                      <p className="mt-1 font-manrope text-[11px] leading-[1.5] text-[#5E6E73]">
+                        {method.note}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <section id="contact-form" className="scroll-mt-20 px-5 py-20 md:px-10 lg:px-[60px] lg:py-28">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+              <div>
+                <p className="font-manrope text-[12px] font-bold uppercase tracking-[0.2em] text-[#F47A20]">
+                  Start the conversation
+                </p>
+                <h2 className="mt-3 font-manrope text-[34px] font-extrabold leading-[1.08] tracking-[-0.04em] text-[#04343C] md:text-[44px]">
+                  Tell us what you need help making clear.
+                </h2>
+                <p className="mt-5 font-manrope text-[15px] leading-[1.8] text-[#5E6E73]">
+                  A short explanation is enough to get started. We’ll review your message and respond with the most useful next step.
+                </p>
+
+                <div className="mt-8 rounded-[22px] bg-[#04343C] p-7 text-white md:p-8">
+                  <FileCheck2 className="h-6 w-6 text-[#F47A20]" strokeWidth={1.8} />
+                  <h3 className="mt-5 font-manrope text-[20px] font-extrabold">
+                    We can help with
+                  </h3>
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    {serviceNeeds.map((service) => (
+                      <div key={service} className="flex items-start gap-2.5">
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#F47A20]" strokeWidth={2.5} />
+                        <span className="font-manrope text-[12px] leading-[1.5] text-white/70">{service}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-start gap-3 rounded-[18px] border border-[#04343C]/10 bg-white p-5">
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#F47A20]" strokeWidth={1.9} />
+                  <div>
+                    <p className="font-manrope text-[12px] font-extrabold text-[#04343C]">Protect sensitive information</p>
+                    <p className="mt-1 font-manrope text-[11px] leading-[1.6] text-[#5E6E73]">
+                      Please don’t include account numbers, tax IDs, or confidential documents in this first message.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-[26px] border border-[#04343C]/10 bg-white p-6 shadow-[0_24px_70px_rgba(4,52,60,0.08)] md:p-10 lg:p-12">
+                <div className="flex flex-col gap-3 border-b border-[#04343C]/10 pb-7 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-manrope text-[11px] font-bold uppercase tracking-[0.16em] text-[#F47A20]">Contact form</p>
+                    <h3 className="mt-2 font-manrope text-[27px] font-extrabold tracking-[-0.03em] text-[#04343C]">
+                      Send us a message
+                    </h3>
+                  </div>
+                  <p className="font-manrope text-[11px] text-[#5E6E73]">All fields are required</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="mt-7 space-y-5">
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div>
+                      <label htmlFor="contact-full-name" className="font-manrope text-[12px] font-bold text-[#04343C]">
+                        Full name
+                      </label>
+                      <Input
+                        id="contact-full-name"
+                        name="fullName"
+                        autoComplete="name"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        placeholder="Your full name"
+                        className="mt-2 h-12 rounded-xl border-[#04343C]/15 bg-[#F8F8F7] px-4 font-manrope text-[13px] text-[#04343C] placeholder:text-[#5E6E73]/55 focus-visible:border-[#0E5C66] focus-visible:ring-1 focus-visible:ring-[#0E5C66]"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="font-manrope text-[12px] font-bold text-[#04343C]">
+                        Email address
+                      </label>
+                      <Input
+                        id="contact-email"
+                        name="email"
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="you@company.com"
+                        type="email"
+                        className="mt-2 h-12 rounded-xl border-[#04343C]/15 bg-[#F8F8F7] px-4 font-manrope text-[13px] text-[#04343C] placeholder:text-[#5E6E73]/55 focus-visible:border-[#0E5C66] focus-visible:ring-1 focus-visible:ring-[#0E5C66]"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-subject" className="font-manrope text-[12px] font-bold text-[#04343C]">
+                      What can we help with?
+                    </label>
+                    <Input
+                      id="contact-subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="For example: monthly bookkeeping and tax filing"
+                      className="mt-2 h-12 rounded-xl border-[#04343C]/15 bg-[#F8F8F7] px-4 font-manrope text-[13px] text-[#04343C] placeholder:text-[#5E6E73]/55 focus-visible:border-[#0E5C66] focus-visible:ring-1 focus-visible:ring-[#0E5C66]"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-message" className="font-manrope text-[12px] font-bold text-[#04343C]">
+                      A little context
+                    </label>
+                    <Textarea
+                      id="contact-message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell us briefly about your situation, timing, and the support you’re looking for."
+                      className="mt-2 min-h-[150px] resize-none rounded-xl border-[#04343C]/15 bg-[#F8F8F7] px-4 py-3 font-manrope text-[13px] leading-[1.7] text-[#04343C] placeholder:text-[#5E6E73]/55 focus-visible:border-[#0E5C66] focus-visible:ring-1 focus-visible:ring-[#0E5C66]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-4 border-t border-[#04343C]/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="max-w-[330px] font-manrope text-[10px] leading-[1.6] text-[#5E6E73]">
+                      By submitting this form, you agree to be contacted about your inquiry.
+                    </p>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group h-12 rounded-full bg-[#F47A20] px-7 font-manrope text-[13px] font-bold text-white transition duration-300 hover:bg-[#04343C] disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? "Sending..." : "Send message"}
+                      {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />}
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-20 md:px-10 lg:px-[60px] lg:py-24">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="grid gap-6 border-b border-[#04343C]/12 pb-9 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+              <div>
+                <p className="font-manrope text-[12px] font-bold uppercase tracking-[0.2em] text-[#F47A20]">
+                  What happens next
+                </p>
+                <h2 className="mt-3 font-manrope text-[34px] font-extrabold leading-[1.08] tracking-[-0.04em] text-[#04343C] md:text-[42px]">
+                  A simple, useful first step.
+                </h2>
+              </div>
+              <p className="max-w-[640px] font-manrope text-[15px] leading-[1.8] text-[#5E6E73] lg:justify-self-end">
+                You don’t need to diagnose the whole problem before contacting us. Start with what you know, and we’ll help organize the rest.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {conversationSteps.map((step, index) => (
+                <div
+                  key={step.number}
+                  className={`rounded-[20px] border p-7 md:p-8 ${
+                    index === 1 ? "border-[#04343C] bg-[#04343C] text-white" : "border-[#04343C]/12 bg-[#F8F8F7]"
+                  }`}
+                >
+                  <span className="font-manrope text-[11px] font-extrabold tracking-[0.16em] text-[#F47A20]">{step.number}</span>
+                  <h3 className="mt-8 font-manrope text-[20px] font-extrabold tracking-[-0.02em]">{step.title}</h3>
+                  <p className={`mt-3 font-manrope text-[13px] leading-[1.7] ${index === 1 ? "text-white/60" : "text-[#5E6E73]"}`}>
+                    {step.detail}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -276,4 +440,3 @@ export const ContactUs = () => {
     </div>
   );
 };
-
