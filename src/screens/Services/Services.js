@@ -7,12 +7,11 @@ import {
     Building2,
     Check,
     FileCheck2,
-    Globe2,
+    Landmark,
     Layers3,
-    ReceiptText,
+    LineChart,
     ShieldCheck,
     UserRound,
-    UsersRound,
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
@@ -21,58 +20,58 @@ import businessImg from "../../assets/business-consulting.png";
 const services = [
     {
         number: "01",
+        icon: FileCheck2,
+        title: "Corporate & Personal Tax",
+        description:
+            "Keep corporate and personal tax obligations organized, accurate, and on time, with practical guidance before, during, and after filing.",
+        deliverables: ["Corporate tax returns", "Personal tax returns", "CRA audit support"],
+        cadence: "Annual and year-round tax support",
+        featured: true,
+    },
+    {
+        number: "02",
+        icon: Landmark,
+        title: "Corporate Financing",
+        description:
+            "Prepare for and navigate corporate financing opportunities with support tailored to your business, funding needs, and financial position.",
+        deliverables: ["Business Loans", "Working Capital", "Short-Term Loan"],
+        cadence: "Financing application support",
+    },
+    {
+        number: "03",
         icon: BarChart3,
         title: "Financial Reporting",
         description:
             "Turn accurate records into financial statements that make performance easier to understand and decisions easier to defend.",
         deliverables: ["Balance sheets", "Income statements", "Cash flow reports"],
         cadence: "Monthly, quarterly, or semi-annually",
-        featured: true,
-    },
-    {
-        number: "02",
-        icon: FileCheck2,
-        title: "Tax Filing",
-        description:
-            "Keep business and personal filings organized, accurate, and on time with coordinated support across your key obligations.",
-        deliverables: ["Corporate tax returns", "GST/HST returns", "Director personal tax"],
-        cadence: "Annual and periodic filing support",
-    },
-    {
-        number: "03",
-        icon: BookOpenCheck,
-        title: "Bookkeeping",
-        description:
-            "Build a dependable financial foundation with consistent transaction recording, reconciliations, and properly maintained books.",
-        deliverables: ["Transaction recording", "Bank reconciliation", "Financial statements"],
-        cadence: "Ongoing monthly support",
     },
     {
         number: "04",
-        icon: Globe2,
-        title: "Canada–U.S. Personal Tax",
+        icon: BookOpenCheck,
+        title: "Bookkeeping & Payroll Services",
         description:
-            "Navigate cross-border personal tax requirements with coordinated filing support for Canadians and U.S. citizens working across the border.",
-        deliverables: ["Canadian personal tax", "U.S. personal tax", "Cross-border compliance"],
-        cadence: "Annual and situation-specific support",
+            "Maintain dependable books and accurate payroll through consistent transaction recording, reconciliations, calculations, and processing.",
+        deliverables: ["Bookkeeping", "Bank reconciliation", "Payroll processing"],
+        cadence: "Ongoing monthly and pay-cycle support",
     },
     {
         number: "05",
-        icon: UsersRound,
-        title: "Payroll",
+        icon: LineChart,
+        title: "Advisory Services",
         description:
-            "Keep employees paid accurately and payroll records organized without pulling your attention away from the business.",
-        deliverables: ["Wage calculations", "Deductions", "Payroll auditing"],
-        cadence: "Aligned with your pay schedule",
+            "Make informed decisions with practical accounting and financial guidance grounded in your industry, operations, and goals.",
+        deliverables: ["Financial guidance", "Cash flow planning", "Growth decisions"],
+        cadence: "Ongoing or project-based advice",
     },
     {
         number: "06",
-        icon: ReceiptText,
-        title: "AR/AP Management",
+        icon: ShieldCheck,
+        title: "Audit & Assurance",
         description:
-            "Create a clearer view of money moving in and out through consistent invoice tracking and payment coordination.",
-        deliverables: ["Receivables tracking", "Payables management", "Invoice processing"],
-        cadence: "Ongoing operational support",
+            "Strengthen confidence in financial information through careful audit and assurance work, including knowledgeable support during CRA audits.",
+        deliverables: ["Audit services", "Assurance support", "CRA audit assistance"],
+        cadence: "Annual or engagement-based support",
     },
 ];
 
@@ -80,32 +79,32 @@ const operatingLayers = [
     {
         label: "Maintain",
         title: "Keep the financial record current",
-        detail: "Bookkeeping, payroll, and AR/AP management",
+        detail: "Bookkeeping and payroll services",
     },
     {
         label: "Comply",
         title: "Meet tax and filing obligations",
-        detail: "Corporate, personal, GST/HST, and cross-border tax",
+        detail: "Corporate and personal tax, audit, and assurance",
     },
     {
         label: "Understand",
         title: "See what the numbers are saying",
-        detail: "Financial reporting and practical guidance",
+        detail: "Financial reporting, corporate financing, and advisory services",
     },
 ];
 
 const serviceScopes = [
     {
-        label: "Tax & compliance",
-        detail: "Accurate filing across business, personal, and cross-border needs.",
+        label: "Tax & assurance",
+        detail: "Corporate and personal tax support backed by audit and assurance expertise.",
     },
     {
         label: "Finance operations",
-        detail: "Reliable bookkeeping, payroll, and day-to-day account management.",
+        detail: "Reliable bookkeeping, payroll, and corporate financing support.",
     },
     {
-        label: "Reporting & insight",
-        detail: "Clear financial statements that support stronger decisions.",
+        label: "Reporting & advice",
+        detail: "Clear financial statements and practical advice that support stronger decisions.",
     },
 ];
 
@@ -408,7 +407,7 @@ export const Services = () => {
                                     Get reliable support across the operational work, compliance deadlines, and reporting your business depends on.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Bookkeeping", "Corporate tax", "Payroll", "AR/AP", "Reporting"].map((item) => (
+                                    {["Corporate & personal tax", "Corporate financing", "Financial reporting", "Bookkeeping & payroll", "Advisory", "Audit & assurance"].map((item) => (
                                         <span key={item} className="rounded-full border border-white/15 px-3 py-1.5 font-manrope text-[11px] font-semibold text-white/75">
                                             {item}
                                         </span>
@@ -422,10 +421,10 @@ export const Services = () => {
                                     For individuals
                                 </h3>
                                 <p className="mt-3 max-w-[520px] font-manrope text-[14px] leading-[1.75] text-[#5E6E73]">
-                                    Work through personal and cross-border tax responsibilities with clear requirements, coordinated filing, and fewer surprises.
+                                    Work through personal tax responsibilities and financial decisions with clear requirements, practical advice, and fewer surprises.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Personal tax", "Canada–U.S. tax", "Director tax", "Tax guidance"].map((item) => (
+                                    {["Personal tax", "CRA audit support", "Financial guidance", "Clear next steps"].map((item) => (
                                         <span key={item} className="rounded-full border border-[#04343C]/12 bg-[#F8F8F7] px-3 py-1.5 font-manrope text-[11px] font-semibold text-[#04343C]/70">
                                             {item}
                                         </span>

@@ -11,15 +11,16 @@ const companyLinks = [
 ];
 
 const serviceLinks = [
+  "Corporate & Personal Tax",
+  "Corporate Financing",
   "Financial Reporting",
-  "Tax Filing",
-  "Bookkeeping",
-  "Canada–U.S. Personal Tax",
-  "Payroll",
-  "AR/AP Management",
+  "Bookkeeping & Payroll Services",
+  "Advisory Services",
+  "Audit & Assurance",
 ];
 
 const socialLinks = [
+  ["LinkedIn", "https://www.linkedin.com/"],
   ["Instagram", "https://www.instagram.com/wealthwizeconsulting/"],
   ["Facebook", "https://www.facebook.com/people/wealthwizeconsulting/61566153907524/?mibextid=LQQJ4d"],
 ];
@@ -144,23 +145,23 @@ export const Footer = () => (
 
             <div className="mt-6 space-y-5">
               <a
-                href="tel:+16478783371"
+                href="tel:+14169020308"
                 className="group flex items-start gap-3 font-manrope text-[12px] font-bold text-[#04343C]/70 transition hover:text-[#04343C]"
               >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#EAF0EF] transition group-hover:bg-[#04343C]">
                   <Phone className="h-3.5 w-3.5 text-[#F47A20]" />
                 </span>
-                <span className="pt-1.5">+1 647 878 3371</span>
+                <span className="pt-1.5">416-902-0308</span>
               </a>
 
               <a
-                href="mailto:zain@wealthwize.pro"
+                href="mailto:Salman@wealthwize.pro"
                 className="group flex items-start gap-3 font-manrope text-[12px] font-bold text-[#04343C]/70 transition hover:text-[#04343C]"
               >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#EAF0EF] transition group-hover:bg-[#04343C]">
                   <Mail className="h-3.5 w-3.5 text-[#F47A20]" />
                 </span>
-                <span className="break-all pt-1.5">zain@wealthwize.pro</span>
+                <span className="break-all pt-1.5">Salman@wealthwize.pro</span>
               </a>
 
               <a

@@ -21,16 +21,16 @@ const contactMethods = [
   {
     icon: Phone,
     label: "Call us",
-    detail: "+1 647 878 3371",
+    detail: "416-902-0308",
     note: "Speak directly with our team",
-    href: "tel:+16478783371",
+    href: "tel:+14169020308",
   },
   {
     icon: Mail,
     label: "Email us",
-    detail: "zain@wealthwize.pro",
+    detail: "Salman@wealthwize.pro",
     note: "Send your question anytime",
-    href: "mailto:zain@wealthwize.pro",
+    href: "mailto:Salman@wealthwize.pro",
   },
   {
     icon: MapPin,
@@ -60,12 +60,12 @@ const conversationSteps = [
 ];
 
 const serviceNeeds = [
-  "Financial reporting",
-  "Tax filing",
-  "Bookkeeping",
-  "Canada–U.S. personal tax",
-  "Payroll",
-  "AR/AP management",
+  "Corporate & Personal Tax",
+  "Corporate Financing",
+  "Financial Reporting",
+  "Bookkeeping & Payroll Services",
+  "Advisory Services",
+  "Audit & Assurance",
 ];
 
 export const ContactUs = () => {

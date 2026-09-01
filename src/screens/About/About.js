@@ -44,18 +44,18 @@ const clientTypes = [
   {
     icon: UserRound,
     eyebrow: "For individuals",
-    title: "Tax support that accounts for the whole picture.",
+    title: "Personal tax and advice that account for the whole picture.",
     description:
-      "From personal filings to Canada–U.S. obligations, we help individuals understand what is required and move forward with confidence.",
-    points: ["Personal tax filing", "Cross-border tax compliance", "Guidance through complex situations"],
+      "From personal tax filings to CRA audit support and practical financial guidance, we help individuals understand what is required and move forward with confidence.",
+    points: ["Personal tax filing", "CRA audit support", "Practical financial guidance"],
   },
   {
     icon: BriefcaseBusiness,
     eyebrow: "For businesses",
     title: "A financial backbone for growing operations.",
     description:
-      "We connect bookkeeping, payroll, tax, reporting, and AR/AP support so owners can run the business from more dependable information.",
-    points: ["Current, reconciled books", "Coordinated tax and payroll", "Reporting that supports decisions"],
+      "We connect tax, corporate financing, reporting, bookkeeping, payroll, advisory, audit, and assurance services so owners can run the business from more dependable information.",
+    points: ["Current, reconciled books", "Financing and advisory support", "Reporting, audit, and assurance"],
   },
 ];
 
@@ -98,10 +98,9 @@ export const About = () => (
                 Financial work is better when it starts with context.
               </h1>
               <p className="mt-5 max-w-[620px] text-base leading-7 text-white/70 sm:text-[17px]">
-                WealthWize is a tax and accounting partner for individuals and
-                growing businesses. We bring structure to complex obligations,
-                explain what matters, and help clients make the next decision
-                with a clearer view.
+                Wealthwize is a full-service accounting and financial advisory
+                firm helping businesses and individuals navigate their finances
+                with clarity and confidence.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link to="/contact" className="group inline-flex h-12 items-center justify-center gap-3 rounded-lg bg-[#F47A20] px-7 text-sm font-extrabold text-white transition hover:bg-[#ff8c38] focus:outline-none focus:ring-2 focus:ring-white">
@@ -123,7 +122,7 @@ export const About = () => (
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#FDB178]">Our home base</p>
                 <p className="mt-1 text-sm font-bold">Mississauga, Ontario</p>
               </div>
-              <p className="max-w-[170px] text-right text-xs leading-5 text-white/60">Supporting individuals and businesses across Canada</p>
+              <p className="max-w-[170px] text-right text-xs leading-5 text-white/60">Serving local and international clients</p>
             </div>
           </div>
         </div>
@@ -162,16 +161,18 @@ export const About = () => (
             </div>
 
             <div className="bg-[#F8F8F7] p-8 text-left sm:p-10 lg:p-12">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F47A20]">What that means in practice</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#F47A20]">About our firm</p>
               <h3 className="mt-4 max-w-[650px] text-[30px] font-extrabold leading-[1.18] tracking-[-0.035em] text-[#04343C] sm:text-[38px]">
-                Accurate work is the foundation. Understanding is the standard.
+                Accounting and financial guidance built around the people we serve.
               </h3>
-              <p className="mt-5 max-w-[650px] text-base leading-8 text-[#5E6E73]">
-                When information is scattered and deadlines are unclear, even
-                routine financial work becomes stressful. WealthWize brings the
-                pieces together, establishes a dependable rhythm, and keeps the
-                important questions visible.
-              </p>
+              <div className="mt-5 max-w-[680px] space-y-5 text-base leading-8 text-[#5E6E73]">
+                <p>
+                  Wealthwize is a full-service accounting and financial advisory firm helping businesses and individuals navigate their finances with clarity and confidence. Our services include bookkeeping, payroll, corporate and personal tax, corporate financing support, and practical accounting and financial advisory services tailored to each client’s needs. We also assist clients during CRA audits, providing knowledgeable guidance and support throughout the process. Built on accuracy, integrity, and responsive service, Wealthwize is committed to simplifying complex financial matters and becoming a trusted long-term partner in our clients’ success.
+                </p>
+                <p>
+                  We proudly serve clients ranging from individuals and businesses in our local community to companies operating across international markets. Our experience spans a diverse range of industries, including manufacturing, retail, transportation, restaurants and hospitality, clothing and apparel, and other service-based and commercial businesses. By taking the time to understand each client’s industry, operations, and goals, we provide practical solutions that support compliance, informed decision-making, and sustainable growth.
+                </p>
+              </div>
 
               <div className="mt-9 grid gap-px overflow-hidden rounded-xl border border-[#04343C]/10 bg-[#04343C]/10 sm:grid-cols-3">
                 {[

@@ -6,13 +6,10 @@ import {
   BookOpenCheck,
   BriefcaseBusiness,
   FileCheck2,
-  Globe2,
   Landmark,
   LineChart,
   Mail,
-  ReceiptText,
   ShieldCheck,
-  Users,
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
@@ -21,6 +18,20 @@ import financialImg from "../../assets/financial-consulting.png";
 
 const services = [
   {
+    icon: FileCheck2,
+    title: "Corporate & Personal Tax",
+    description:
+      "Coordinated tax planning, preparation, and filing support for corporations and individuals, including guidance during CRA audits.",
+    detail: "Corporate tax · Personal tax · CRA support",
+  },
+  {
+    icon: Landmark,
+    title: "Corporate Financing",
+    description:
+      "Practical support with financing needs, from preparing applications to navigating the options available to your business.",
+    detail: "Business Loans · Working Capital · Short-Term Loan",
+  },
+  {
     icon: BarChart3,
     title: "Financial Reporting",
     description:
@@ -28,39 +39,25 @@ const services = [
     detail: "Balance sheets · Income statements · Cash flow",
   },
   {
-    icon: FileCheck2,
-    title: "Tax Filing",
-    description:
-      "Coordinated corporate, GST/HST, and personal tax filings—prepared accurately and managed against every deadline.",
-    detail: "Corporate · GST/HST · Personal",
-  },
-  {
     icon: BookOpenCheck,
-    title: "Bookkeeping",
+    title: "Bookkeeping & Payroll Services",
     description:
-      "Reliable transaction recording and monthly reconciliations that keep your books current, clean, and useful.",
-    detail: "Reconciliation · Recording · Statements",
+      "Reliable bookkeeping, reconciliations, and payroll support that keep your records current and your employees paid accurately.",
+    detail: "Bookkeeping · Reconciliations · Payroll",
   },
   {
-    icon: Globe2,
-    title: "Cross-Border Tax",
+    icon: BriefcaseBusiness,
+    title: "Advisory Services",
     description:
-      "Personal tax support for Canadians working in the U.S. and U.S. citizens living or working in Canada.",
-    detail: "Canada · United States · Compliance",
+      "Practical accounting and financial advice shaped around your operations, priorities, and long-term goals.",
+    detail: "Planning · Decisions · Sustainable growth",
   },
   {
-    icon: Users,
-    title: "Payroll",
+    icon: ShieldCheck,
+    title: "Audit & Assurance",
     description:
-      "End-to-end payroll support covering wage calculations, deductions, payment processing, and payroll reviews.",
-    detail: "Calculations · Deductions · Auditing",
-  },
-  {
-    icon: ReceiptText,
-    title: "AR/AP Management",
-    description:
-      "A more disciplined way to track invoices, manage payments, and keep receivables and payables moving.",
-    detail: "Invoices · Receivables · Payables",
+      "Detail-focused audit and assurance services, with knowledgeable support throughout CRA audit matters.",
+    detail: "Audit · Assurance · CRA audit support",
   },
 ];
 
@@ -102,7 +99,7 @@ const confidencePoints = [
     icon: BriefcaseBusiness,
     title: "One coordinated team",
     description:
-      "Tax, bookkeeping, payroll, and reporting work together under one accountable relationship.",
+      "Your core accounting and financial services work together under one accountable relationship.",
   },
 ];
 
@@ -186,9 +183,9 @@ export const Home = () => {
               </h1>
 
               <p className="mt-4 max-w-[650px] text-base leading-7 text-white/[.72] sm:text-[17px]">
-                WealthWize helps individuals and growing businesses manage tax,
-                books, payroll, reporting, and cross-border obligations—with one
-                dependable team and a clearer view of every decision.
+                WealthWize helps individuals and businesses manage tax,
+                financing, reporting, bookkeeping, payroll, advisory, and audit
+                needs—with one dependable team and a clearer view of every decision.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -267,9 +264,9 @@ export const Home = () => {
         <section aria-label="Who we support" className="border-b border-[#04343C]/10 bg-white">
           <div className="mx-auto grid max-w-[1440px] grid-cols-1 px-5 sm:grid-cols-3 md:px-10 lg:px-[60px]">
             {[
-              ["For individuals", "Personal and cross-border tax support"],
-              ["For businesses", "Books, payroll, tax, and reporting"],
-              ["Based in Mississauga", "Supporting clients across Canada"],
+              ["For individuals", "Personal tax and practical financial advice"],
+              ["For businesses", "Accounting, financing, advisory, and assurance"],
+              ["Based in Mississauga", "Serving local and international clients"],
             ].map(([title, detail], index) => (
               <div key={title} className={`py-7 text-left sm:px-6 ${index > 0 ? "border-t border-[#04343C]/10 sm:border-l sm:border-t-0" : ""}`}>
                 <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#F47A20]">{title}</p>
@@ -454,7 +451,7 @@ export const Home = () => {
                     </button>
                   </div>
                   <p className="px-1 pb-1 pt-3 text-left text-[11px] leading-5 text-[#5E6E73]">
-                    Prefer to speak now? Call us at <a href="tel:+16478783371" className="font-bold text-[#04343C] hover:text-[#F47A20]">+1 647 878 3371</a>.
+                    Prefer to speak now? Call us at <a href="tel:+14169020308" className="font-bold text-[#04343C] hover:text-[#F47A20]">416-902-0308</a>.
                   </p>
                 </form>
               </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowUpRight, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, MapPin, Menu, Phone, X } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const navItems = [
@@ -9,6 +9,24 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/",
+    icon: Linkedin,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/wealthwizeconsulting/",
+    icon: Instagram,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/wealthwizeconsulting/61566153907524/?mibextid=LQQJ4d",
+    icon: Facebook,
+  },
 ];
 
 export const Navbar = () => {
@@ -88,14 +106,24 @@ export const Navbar = () => {
             <MapPin className="h-3.5 w-3.5 text-[#F47A20]" />
             <span>320 Matheson Boulevard West, Mississauga, Ontario</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="mailto:zain@wealthwize.pro" className="flex items-center gap-2 text-white/70 transition hover:text-white">
-              <Mail className="h-3.5 w-3.5 text-[#F47A20]" />
-              zain@wealthwize.pro
-            </a>
-            <a href="tel:+16478783371" className="flex items-center gap-2 text-white/70 transition hover:text-white">
+          <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3" aria-label="WealthWize social media">
+              {socialLinks.map(({ label, href, icon: SocialIcon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="text-white/70 transition hover:text-white"
+                >
+                  <SocialIcon className="h-3.5 w-3.5" />
+                </a>
+              ))}
+            </div>
+            <a href="tel:+14169020308" className="flex items-center gap-2 text-white/70 transition hover:text-white">
               <Phone className="h-3.5 w-3.5 text-[#F47A20]" />
-              +1 647 878 3371
+              416-902-0308
             </a>
           </div>
         </div>
@@ -246,9 +274,23 @@ export const Navbar = () => {
                 Book a consultation
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 pb-1 text-[11px] text-white/60 sm:text-xs">
-                <a href="tel:+16478783371">+1 647 878 3371</a>
-                <a href="mailto:zain@wealthwize.pro">zain@wealthwize.pro</a>
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-x-5 gap-y-3 pb-1 text-[11px] text-white/60 sm:text-xs">
+                <div className="flex items-center gap-4" aria-label="WealthWize social media">
+                  {socialLinks.map(({ label, href, icon: SocialIcon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className="transition hover:text-white"
+                    >
+                      <SocialIcon className="h-4 w-4" />
+                    </a>
+                  ))}
+                </div>
+                <a href="tel:+14169020308">416-902-0308</a>
+                <a href="mailto:Salman@wealthwize.pro">Salman@wealthwize.pro</a>
               </div>
             </div>
           </div>
