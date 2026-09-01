@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
+import { useAutoScrollPastHero } from "../../hooks/useAutoScrollPastHero";
 import heroImage from "../../assets/about-hero-bg.jpg";
 
 const principles = [
@@ -46,16 +47,16 @@ const clientTypes = [
     eyebrow: "For individuals",
     title: "Personal tax and advice that account for the whole picture.",
     description:
-      "From personal tax filings to CRA audit support and practical financial guidance, we help individuals understand what is required and move forward with confidence.",
-    points: ["Personal tax filing", "CRA audit support", "Practical financial guidance"],
+      "From personal tax filings in Canada and the US to practical financial guidance, we help individuals understand what is required and move forward with confidence.",
+    points: ["Canadian personal tax", "US personal tax", "Practical financial guidance"],
   },
   {
     icon: BriefcaseBusiness,
     eyebrow: "For businesses",
     title: "A financial backbone for growing operations.",
     description:
-      "We connect tax, corporate financing, reporting, bookkeeping, payroll, advisory, audit, and assurance services so owners can run the business from more dependable information.",
-    points: ["Current, reconciled books", "Financing and advisory support", "Reporting, audit, and assurance"],
+      "We connect Canadian corporate tax, corporate financing, reporting, bookkeeping, payroll, and advisory services so owners can run the business from more dependable information.",
+    points: ["Current, reconciled books", "Financing and advisory support", "Reporting and tax support"],
   },
 ];
 
@@ -80,8 +81,11 @@ const approach = [
   },
 ];
 
-export const About = () => (
-  <div className="min-h-screen w-full bg-[#F8F8F7] text-[#04343C]">
+export const About = () => {
+  const contentRef = useAutoScrollPastHero();
+
+  return (
+    <div className="min-h-screen w-full bg-[#F8F8F7] text-[#04343C]">
     <Navbar />
 
     <main>
@@ -128,7 +132,7 @@ export const About = () => (
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
+      <section ref={contentRef} className="scroll-mt-[70px] bg-white py-20 md:py-24">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 lg:px-[60px]">
           <div className="grid overflow-hidden rounded-2xl border border-[#04343C]/10 lg:grid-cols-[.88fr_1.12fr]">
             <div className="relative overflow-hidden bg-[#0E5C66] p-8 text-left text-white sm:p-10 lg:p-12">
@@ -167,7 +171,7 @@ export const About = () => (
               </h3>
               <div className="mt-5 max-w-[680px] space-y-5 text-base leading-8 text-[#5E6E73]">
                 <p>
-                  Wealthwize is a full-service accounting and financial advisory firm helping businesses and individuals navigate their finances with clarity and confidence. Our services include bookkeeping, payroll, corporate and personal tax, corporate financing support, and practical accounting and financial advisory services tailored to each client’s needs. We also assist clients during CRA audits, providing knowledgeable guidance and support throughout the process. Built on accuracy, integrity, and responsive service, Wealthwize is committed to simplifying complex financial matters and becoming a trusted long-term partner in our clients’ success.
+                  Wealthwize is a full-service accounting and financial advisory firm helping businesses and individuals navigate their finances with clarity and confidence. Our services include bookkeeping, payroll, Canadian corporate tax, Canadian and US personal tax, corporate financing support, and practical accounting and financial advisory services tailored to each client’s needs. Built on accuracy, integrity, and responsive service, Wealthwize is committed to simplifying complex financial matters and becoming a trusted long-term partner in our clients’ success.
                 </p>
                 <p>
                   We proudly serve clients ranging from individuals and businesses in our local community to companies operating across international markets. Our experience spans a diverse range of industries, including manufacturing, retail, transportation, restaurants and hospitality, clothing and apparel, and other service-based and commercial businesses. By taking the time to understand each client’s industry, operations, and goals, we provide practical solutions that support compliance, informed decision-making, and sustainable growth.
@@ -317,5 +321,6 @@ export const About = () => (
     </main>
 
     <Footer />
-  </div>
-);
+    </div>
+  );
+};

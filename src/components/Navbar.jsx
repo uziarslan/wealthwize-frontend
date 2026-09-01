@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowUpRight, Facebook, Instagram, Linkedin, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, Instagram, MapPin, Menu, Phone, X } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const navItems = [
@@ -13,19 +13,9 @@ const navItems = [
 
 const socialLinks = [
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/",
-    icon: Linkedin,
-  },
-  {
     label: "Instagram",
     href: "https://www.instagram.com/wealthwizeconsulting/",
     icon: Instagram,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/people/wealthwizeconsulting/61566153907524/?mibextid=LQQJ4d",
-    icon: Facebook,
   },
 ];
 
@@ -290,7 +280,7 @@ export const Navbar = () => {
                   ))}
                 </div>
                 <a href="tel:+14169020308">416-902-0308</a>
-                <a href="mailto:Salman@wealthwize.pro">Salman@wealthwize.pro</a>
+                <a href="mailto:info@wealthwize.pro">info@wealthwize.pro</a>
               </div>
             </div>
           </div>

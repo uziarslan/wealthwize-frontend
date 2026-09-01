@@ -4,6 +4,7 @@ import { Home } from './screens/Home/Home';
 import { About } from './screens/About/About';
 import { ContactUs } from './screens/ContactUs/ContactUs';
 import { Services } from './screens/Services/Services';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
+        <WhatsAppButton />
       </div>
     </Router>
   );

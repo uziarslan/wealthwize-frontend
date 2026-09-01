@@ -10,6 +10,7 @@ import {
   LineChart,
   Mail,
   ShieldCheck,
+  UserRound,
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
@@ -19,17 +20,25 @@ import financialImg from "../../assets/financial-consulting.png";
 const services = [
   {
     icon: FileCheck2,
-    title: "Corporate & Personal Tax",
+    title: "Corporate Taxes – CAD",
     description:
-      "Coordinated tax planning, preparation, and filing support for corporations and individuals, including guidance during CRA audits.",
-    detail: "Corporate tax · Personal tax · CRA support",
+      "Tax planning, preparation, and filing support for Canadian corporations, with practical guidance through each requirement.",
+    detail: "Canadian corporate tax · Planning · Filing support",
   },
   {
     icon: Landmark,
     title: "Corporate Financing",
     description:
       "Practical support with financing needs, from preparing applications to navigating the options available to your business.",
-    detail: "Business Loans · Working Capital · Short-Term Loan",
+    detail:
+      "Business Loans · Working Capital · Short-Term Loan · Line of Credit · Equipment Financing · Acquisition Financing",
+  },
+  {
+    icon: UserRound,
+    title: "Personal Taxes – US & CAD",
+    description:
+      "Personal tax preparation and filing support for individuals in Canada and the United States.",
+    detail: "Canadian personal tax · US personal tax · Filing guidance",
   },
   {
     icon: BarChart3,
@@ -51,13 +60,6 @@ const services = [
     description:
       "Practical accounting and financial advice shaped around your operations, priorities, and long-term goals.",
     detail: "Planning · Decisions · Sustainable growth",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Audit & Assurance",
-    description:
-      "Detail-focused audit and assurance services, with knowledgeable support throughout CRA audit matters.",
-    detail: "Audit · Assurance · CRA audit support",
   },
 ];
 
@@ -175,17 +177,17 @@ export const Home = () => {
             <div className="max-w-[720px] text-left">
               <div className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#FDB178] sm:text-sm">
                 <span className="h-px w-8 bg-[#F47A20]" />
-                Tax &amp; accounting, made clear
+                Corporate financing, made clear
               </div>
 
               <h1 className="max-w-[730px] text-[40px] font-extrabold leading-[1.04] tracking-[-0.045em] text-white sm:text-[48px] md:text-[54px] lg:text-[58px]">
-                Financial clarity for what comes next.
+                The right capital for what comes next.
               </h1>
 
               <p className="mt-4 max-w-[650px] text-base leading-7 text-white/[.72] sm:text-[17px]">
-                WealthWize helps individuals and businesses manage tax,
-                financing, reporting, bookkeeping, payroll, advisory, and audit
-                needs—with one dependable team and a clearer view of every decision.
+                WealthWize helps businesses secure and structure financing for
+                acquisitions, expansion, working capital, and refinancing—with
+                clear advice and lender-ready support from one dependable team.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -193,14 +195,14 @@ export const Home = () => {
                   to="/contact"
                   className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-[#F47A20] px-7 text-sm font-bold text-white transition hover:bg-[#ff8c38] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#04343C]"
                 >
-                  Book a consultation
+                  Discuss your financing
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/services"
                   className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/25 px-7 text-sm font-bold text-white transition hover:border-white/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                  Explore our services
+                  Explore financing options
                 </Link>
               </div>
 
@@ -215,7 +217,7 @@ export const Home = () => {
                       Your financial picture
                     </p>
                     <h2 className="mt-1 text-xl font-bold tracking-[-0.02em] text-[#04343C]">
-                      Organized. Current. Decision-ready.
+                      Structured. Lender-ready. Built to move.
                     </h2>
                   </div>
                   <div className="hidden h-11 w-11 items-center justify-center rounded-full bg-[#04343C] text-white sm:flex">
@@ -227,8 +229,8 @@ export const Home = () => {
                   <div className="rounded-xl bg-[#F8F8F7] p-4">
                     <div className="flex items-end justify-between gap-6">
                       <div>
-                        <p className="text-xs font-semibold text-[#5E6E73]">Reporting rhythm</p>
-                        <p className="mt-1 text-lg font-bold text-[#04343C]">A clearer month-end</p>
+                        <p className="text-xs font-semibold text-[#5E6E73]">Financing readiness</p>
+                        <p className="mt-1 text-lg font-bold text-[#04343C]">A clearer path to capital</p>
                       </div>
                       <div className="flex h-16 items-end gap-1.5" aria-hidden="true">
                         {[34, 48, 42, 61, 72, 88].map((height, index) => (
@@ -243,9 +245,9 @@ export const Home = () => {
                   </div>
 
                   {[
-                    [BookOpenCheck, "Books & reconciliations", "Kept current"],
-                    [FileCheck2, "Tax & compliance", "Planned ahead"],
-                    [LineChart, "Reports & guidance", "Made useful"],
+                    [BookOpenCheck, "Funding strategy", "Built for your goals"],
+                    [FileCheck2, "Lender-ready package", "Prepared with confidence"],
+                    [LineChart, "Deal support", "From term sheet to close"],
                   ].map(([Icon, label, status]) => (
                     <div key={label} className="flex items-center gap-4 border-b border-[#04343C]/10 pb-5 last:border-0 last:pb-0">
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0E5C66]/10 text-[#0E5C66]">
@@ -264,8 +266,8 @@ export const Home = () => {
         <section aria-label="Who we support" className="border-b border-[#04343C]/10 bg-white">
           <div className="mx-auto grid max-w-[1440px] grid-cols-1 px-5 sm:grid-cols-3 md:px-10 lg:px-[60px]">
             {[
-              ["For individuals", "Personal tax and practical financial advice"],
-              ["For businesses", "Accounting, financing, advisory, and assurance"],
+              ["For individuals", "Personal taxes in Canada and the US, plus practical financial advice"],
+              ["For businesses", "Accounting, financing, reporting, and advisory"],
               ["Based in Mississauga", "Serving local and international clients"],
             ].map(([title, detail], index) => (
               <div key={title} className={`py-7 text-left sm:px-6 ${index > 0 ? "border-t border-[#04343C]/10 sm:border-l sm:border-t-0" : ""}`}>

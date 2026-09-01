@@ -15,17 +15,18 @@ import {
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
+import { useAutoScrollPastHero } from "../../hooks/useAutoScrollPastHero";
 import businessImg from "../../assets/business-consulting.png";
 
 const services = [
     {
         number: "01",
         icon: FileCheck2,
-        title: "Corporate & Personal Tax",
+        title: "Corporate Taxes – CAD",
         description:
-            "Keep corporate and personal tax obligations organized, accurate, and on time, with practical guidance before, during, and after filing.",
-        deliverables: ["Corporate tax returns", "Personal tax returns", "CRA audit support"],
-        cadence: "Annual and year-round tax support",
+            "Keep Canadian corporate tax obligations organized, accurate, and on time, with practical guidance before, during, and after filing.",
+        deliverables: ["Corporate tax returns", "Tax planning", "Filing support"],
+        cadence: "Canadian corporate tax support",
         featured: true,
     },
     {
@@ -34,11 +35,27 @@ const services = [
         title: "Corporate Financing",
         description:
             "Prepare for and navigate corporate financing opportunities with support tailored to your business, funding needs, and financial position.",
-        deliverables: ["Business Loans", "Working Capital", "Short-Term Loan"],
+        deliverables: [
+            "Business Loans",
+            "Working Capital",
+            "Short-Term Loan",
+            "Line of Credit",
+            "Equipment Financing",
+            "Acquisition Financing",
+        ],
         cadence: "Financing application support",
     },
     {
         number: "03",
+        icon: UserRound,
+        title: "Personal Taxes – US & CAD",
+        description:
+            "Get organized filing support for personal tax obligations in Canada and the United States, with clear guidance through each requirement.",
+        deliverables: ["Canadian personal tax", "US personal tax", "Filing guidance"],
+        cadence: "Canadian and US personal tax support",
+    },
+    {
+        number: "04",
         icon: BarChart3,
         title: "Financial Reporting",
         description:
@@ -47,7 +64,7 @@ const services = [
         cadence: "Monthly, quarterly, or semi-annually",
     },
     {
-        number: "04",
+        number: "05",
         icon: BookOpenCheck,
         title: "Bookkeeping & Payroll Services",
         description:
@@ -56,22 +73,13 @@ const services = [
         cadence: "Ongoing monthly and pay-cycle support",
     },
     {
-        number: "05",
+        number: "06",
         icon: LineChart,
         title: "Advisory Services",
         description:
             "Make informed decisions with practical accounting and financial guidance grounded in your industry, operations, and goals.",
         deliverables: ["Financial guidance", "Cash flow planning", "Growth decisions"],
         cadence: "Ongoing or project-based advice",
-    },
-    {
-        number: "06",
-        icon: ShieldCheck,
-        title: "Audit & Assurance",
-        description:
-            "Strengthen confidence in financial information through careful audit and assurance work, including knowledgeable support during CRA audits.",
-        deliverables: ["Audit services", "Assurance support", "CRA audit assistance"],
-        cadence: "Annual or engagement-based support",
     },
 ];
 
@@ -84,7 +92,7 @@ const operatingLayers = [
     {
         label: "Comply",
         title: "Meet tax and filing obligations",
-        detail: "Corporate and personal tax, audit, and assurance",
+        detail: "Canadian corporate tax and Canadian and US personal tax",
     },
     {
         label: "Understand",
@@ -95,8 +103,8 @@ const operatingLayers = [
 
 const serviceScopes = [
     {
-        label: "Tax & assurance",
-        detail: "Corporate and personal tax support backed by audit and assurance expertise.",
+        label: "Tax services",
+        detail: "Canadian corporate tax and Canadian and US personal tax support.",
     },
     {
         label: "Finance operations",
@@ -109,6 +117,8 @@ const serviceScopes = [
 ];
 
 export const Services = () => {
+    const contentRef = useAutoScrollPastHero();
+
     return (
         <div className="min-h-screen w-full bg-[#F8F8F7] text-[#04343C]">
             <Navbar />
@@ -205,7 +215,7 @@ export const Services = () => {
                     </div>
                 </section>
 
-                <section className="border-b border-[#04343C]/10 bg-white">
+                <section ref={contentRef} className="scroll-mt-[70px] border-b border-[#04343C]/10 bg-white">
                     <div className="mx-auto grid max-w-[1440px] md:grid-cols-3 md:px-10 lg:px-[60px]">
                         {serviceScopes.map((scope, index) => (
                             <div
@@ -407,7 +417,7 @@ export const Services = () => {
                                     Get reliable support across the operational work, compliance deadlines, and reporting your business depends on.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Corporate & personal tax", "Corporate financing", "Financial reporting", "Bookkeeping & payroll", "Advisory", "Audit & assurance"].map((item) => (
+                                    {["Corporate taxes – CAD", "Corporate financing", "Financial reporting", "Bookkeeping & payroll", "Advisory"].map((item) => (
                                         <span key={item} className="rounded-full border border-white/15 px-3 py-1.5 font-manrope text-[11px] font-semibold text-white/75">
                                             {item}
                                         </span>
@@ -421,10 +431,10 @@ export const Services = () => {
                                     For individuals
                                 </h3>
                                 <p className="mt-3 max-w-[520px] font-manrope text-[14px] leading-[1.75] text-[#5E6E73]">
-                                    Work through personal tax responsibilities and financial decisions with clear requirements, practical advice, and fewer surprises.
+                                    Work through personal tax responsibilities in Canada and the US with clear requirements, practical advice, and fewer surprises.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Personal tax", "CRA audit support", "Financial guidance", "Clear next steps"].map((item) => (
+                                    {["Personal taxes – US & CAD", "Financial guidance", "Clear next steps"].map((item) => (
                                         <span key={item} className="rounded-full border border-[#04343C]/12 bg-[#F8F8F7] px-3 py-1.5 font-manrope text-[11px] font-semibold text-[#04343C]/70">
                                             {item}
                                         </span>

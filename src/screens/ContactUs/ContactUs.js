@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
+import { useAutoScrollPastHero } from "../../hooks/useAutoScrollPastHero";
 import { Modal } from "../../components/ui/modal";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
@@ -28,9 +29,9 @@ const contactMethods = [
   {
     icon: Mail,
     label: "Email us",
-    detail: "Salman@wealthwize.pro",
+    detail: "info@wealthwize.pro",
     note: "Send your question anytime",
-    href: "mailto:Salman@wealthwize.pro",
+    href: "mailto:info@wealthwize.pro",
   },
   {
     icon: MapPin,
@@ -60,15 +61,16 @@ const conversationSteps = [
 ];
 
 const serviceNeeds = [
-  "Corporate & Personal Tax",
+  "Corporate Taxes – CAD",
   "Corporate Financing",
+  "Personal Taxes – US & CAD",
   "Financial Reporting",
   "Bookkeeping & Payroll Services",
   "Advisory Services",
-  "Audit & Assurance",
 ];
 
 export const ContactUs = () => {
+  const contentRef = useAutoScrollPastHero();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -223,7 +225,7 @@ export const ContactUs = () => {
           </div>
         </section>
 
-        <section className="border-b border-[#04343C]/10 bg-white">
+        <section ref={contentRef} className="scroll-mt-[70px] border-b border-[#04343C]/10 bg-white">
           <div className="mx-auto grid max-w-[1440px] md:grid-cols-3 md:px-10 lg:px-[60px]">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
