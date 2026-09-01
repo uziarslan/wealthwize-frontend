@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight, Instagram, MapPin, Menu, Phone, X } from "lucide-react";
-import logo from "../assets/logo.png";
+import brandLogo from "../assets/logo-trans.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -125,12 +125,14 @@ export const Navbar = () => {
             isScrolled ? "h-[70px]" : "h-[76px] md:h-[84px]"
           }`}
         >
-          <Link to="/" className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#F47A20]" aria-label="WealthWize Consulting Group home">
-            <img className={`object-contain transition-[width,height] duration-500 ${isScrolled ? "h-12 w-12" : "h-14 w-14 md:h-16 md:w-16"}`} alt="" src={logo} />
-            <span className="hidden sm:block">
-              <span className="block text-[15px] font-extrabold tracking-[0.13em] text-[#04343C]">WEALTHWIZE</span>
-              <span className="mt-0.5 block text-[9px] font-bold tracking-[0.24em] text-[#5E6E73]">CONSULTING GROUP</span>
-            </span>
+          <Link to="/" className="flex items-center focus:outline-none focus:ring-2 focus:ring-[#F47A20]" aria-label="WealthWize Consulting Group home">
+            <img
+              className={`h-auto object-contain transition-[width] duration-500 ${
+                isScrolled ? "w-[180px] sm:w-[210px]" : "w-[190px] sm:w-[230px] md:w-[250px]"
+              }`}
+              alt=""
+              src={brandLogo}
+            />
           </Link>
 
           <div className="hidden items-center gap-8 lg:flex xl:gap-11">
@@ -212,15 +214,12 @@ export const Navbar = () => {
             <div className="flex items-center justify-between border-b border-white/15 pb-4">
               <Link
                 to="/"
-                className={`flex items-center gap-3 transition-all duration-500 motion-reduce:duration-0 ${
+                className={`flex items-center rounded-lg bg-white/95 px-2 transition-all duration-500 motion-reduce:duration-0 ${
                   mobileMenuOpen ? "translate-x-0 opacity-100 delay-100" : "translate-x-4 opacity-0 delay-0"
                 }`}
+                aria-label="WealthWize Consulting Group home"
               >
-                <img className="h-12 w-12 object-contain sm:h-14 sm:w-14" alt="" src={logo} />
-                <span>
-                  <span className="block text-sm font-extrabold tracking-[0.13em]">WEALTHWIZE</span>
-                  <span className="mt-0.5 block text-[8px] font-bold tracking-[0.22em] text-white/60">CONSULTING GROUP</span>
-                </span>
+                <img className="h-auto w-[190px] object-contain sm:w-[215px]" alt="" src={brandLogo} />
               </Link>
               <button
                 type="button"
