@@ -7,14 +7,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The contact form uses Google reCAPTCHA v2 (the “I’m not a robot” checkbox). Register the production domain in the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create), then configure both values locally and in Vercel:
 
 ```dotenv
-# Public site key; included in the frontend bundle
-REACT_APP_RECAPTCHA_SITE_KEY=your_recaptcha_v2_site_key
+# Public site key; returned to the contact form by /api/recaptcha-config
+RECAPTCHA_SITE_KEY=your_recaptcha_v2_site_key
 
 # Private secret; server-side only
 RECAPTCHA_SECRET_KEY=your_recaptcha_v2_secret_key
 ```
 
-Never prefix the secret key with `REACT_APP_`, because Create React App exposes variables with that prefix to browsers. Restart the development server after changing local environment variables, and redeploy after changing them in Vercel.
+The site key is public and the secret remains server-side. Restart the local Vercel development server after changing local environment variables, and redeploy after changing them in Vercel.
 
 ## Available Scripts
 

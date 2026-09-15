@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   ArrowRight,
@@ -70,8 +70,6 @@ const serviceNeeds = [
   "Advisory Services",
 ];
 
-const recaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
-
 export const ContactUs = () => {
   const contentRef = useAutoScrollPastHero();
   const recaptchaRef = useRef(null);
@@ -82,6 +80,8 @@ export const ContactUs = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isRecaptchaLoading, setIsRecaptchaLoading] = useState(true);
+  const [recaptchaSiteKey, setRecaptchaSiteKey] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [modalState, setModalState] = useState({
     isOpen: false,
@@ -89,6 +89,42 @@ export const ContactUs = () => {
     message: "",
     type: "success",
   });
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadRecaptchaSiteKey = async () => {
+      try {
+        const response = await fetch("/api/recaptcha-config", {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("Unable to load reCAPTCHA configuration.");
+        }
+
+        const { siteKey } = await response.json();
+
+        if (!siteKey) {
+          throw new Error("The reCAPTCHA site key is missing.");
+        }
+
+        setRecaptchaSiteKey(siteKey);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          setRecaptchaSiteKey("");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsRecaptchaLoading(false);
+        }
+      }
+    };
+
+    loadRecaptchaSiteKey();
+
+    return () => controller.abort();
+  }, []);
 
   const showModal = (title, message, type = "success") => {
     setModalState({ isOpen: true, title, message, type });
@@ -408,7 +444,11 @@ export const ContactUs = () => {
                     <p className="font-manrope text-[12px] font-bold text-[#04343C]">
                       Spam protection
                     </p>
-                    {recaptchaSiteKey ? (
+                    {isRecaptchaLoading ? (
+                      <p className="mt-2 rounded-xl border border-[#04343C]/10 bg-[#F8F8F7] px-4 py-3 font-manrope text-[11px] leading-[1.6] text-[#5E6E73]">
+                        Loading verification…
+                      </p>
+                    ) : recaptchaSiteKey ? (
                       <div className="mt-2 max-w-full overflow-hidden">
                         <div className="origin-top-left max-[380px]:-mb-4 max-[380px]:scale-[0.78]">
                           <ReCAPTCHA
