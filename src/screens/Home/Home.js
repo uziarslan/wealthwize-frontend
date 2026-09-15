@@ -20,7 +20,7 @@ import financialImg from "../../assets/financial-consulting.png";
 const services = [
   {
     icon: FileCheck2,
-    title: "Corporate Taxes – CAD",
+    title: "Corporate Taxes",
     description:
       "Tax planning, preparation, and filing support for Canadian corporations, with practical guidance through each requirement.",
     detail: "Canadian corporate tax · Planning · Filing support",
@@ -35,7 +35,7 @@ const services = [
   },
   {
     icon: UserRound,
-    title: "Personal Taxes – US & CAD",
+    title: "Personal Taxes – Canada & USA",
     description:
       "Personal tax preparation and filing support for individuals in Canada and the United States.",
     detail: "Canadian personal tax · US personal tax · Filing guidance",

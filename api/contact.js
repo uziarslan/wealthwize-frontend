@@ -6,23 +6,65 @@
 // (Project → Settings → Environment Variables):
 //   MAILTRAP_TOKEN, MAILTRAP_TEMPLATE_UUID,
 //   MAILTRAP_SENDER_EMAIL, MAILTRAP_SENDER_NAME,
-//   CONTACT_RECIPIENT_EMAIL
+//   CONTACT_RECIPIENT_EMAIL, RECAPTCHA_SECRET_KEY
 
 const { MailtrapClient } = require("mailtrap");
 
 const client = new MailtrapClient({ token: process.env.MAILTRAP_TOKEN });
+
+const verifyRecaptcha = async (token) => {
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    throw new Error("RECAPTCHA_SECRET_KEY is not configured.");
+  }
+
+  const verificationResponse = await fetch(
+    "https://www.google.com/recaptcha/api/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: process.env.RECAPTCHA_SECRET_KEY,
+        response: token,
+      }).toString(),
+    }
+  );
+
+  if (!verificationResponse.ok) {
+    throw new Error("reCAPTCHA verification service request failed.");
+  }
+
+  const verification = await verificationResponse.json();
+  return verification.success === true;
+};
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed." });
   }
 
-  const { source, fullName, email, subject, message } = req.body || {};
+  const { source, fullName, email, subject, message, recaptchaToken } = req.body || {};
 
   // Email is the only field every form collects, so it's the one
   // hard requirement. The rest are optional (lead forms send only email).
   if (!email) {
     return res.status(400).json({ ok: false, error: "Email is required." });
+  }
+
+  if (source === "Contact Form") {
+    if (!recaptchaToken) {
+      return res.status(400).json({ ok: false, error: "reCAPTCHA verification is required." });
+    }
+
+    try {
+      const isHuman = await verifyRecaptcha(recaptchaToken);
+
+      if (!isHuman) {
+        return res.status(400).json({ ok: false, error: "reCAPTCHA verification failed." });
+      }
+    } catch (err) {
+      console.error("reCAPTCHA verification failed:", err);
+      return res.status(502).json({ ok: false, error: "Unable to verify reCAPTCHA." });
+    }
   }
 
   try {

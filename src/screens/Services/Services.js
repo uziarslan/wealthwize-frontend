@@ -22,7 +22,7 @@ const services = [
     {
         number: "01",
         icon: FileCheck2,
-        title: "Corporate Taxes – CAD",
+        title: "Corporate Taxes",
         description:
             "Keep Canadian corporate tax obligations organized, accurate, and on time, with practical guidance before, during, and after filing.",
         deliverables: ["Corporate tax returns", "Tax planning", "Filing support"],
@@ -48,7 +48,7 @@ const services = [
     {
         number: "03",
         icon: UserRound,
-        title: "Personal Taxes – US & CAD",
+        title: "Personal Taxes – Canada & USA",
         description:
             "Get organized filing support for personal tax obligations in Canada and the United States, with clear guidance through each requirement.",
         deliverables: ["Canadian personal tax", "US personal tax", "Filing guidance"],
@@ -417,7 +417,7 @@ export const Services = () => {
                                     Get reliable support across the operational work, compliance deadlines, and reporting your business depends on.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Corporate taxes – CAD", "Corporate financing", "Financial reporting", "Bookkeeping & payroll", "Advisory"].map((item) => (
+                                    {["Corporate taxes", "Corporate financing", "Financial reporting", "Bookkeeping & payroll", "Advisory"].map((item) => (
                                         <span key={item} className="rounded-full border border-white/15 px-3 py-1.5 font-manrope text-[11px] font-semibold text-white/75">
                                             {item}
                                         </span>
@@ -434,7 +434,7 @@ export const Services = () => {
                                     Work through personal tax responsibilities in Canada and the US with clear requirements, practical advice, and fewer surprises.
                                 </p>
                                 <div className="mt-7 flex flex-wrap gap-2">
-                                    {["Personal taxes – US & CAD", "Financial guidance", "Clear next steps"].map((item) => (
+                                    {["Personal taxes – Canada & USA", "Financial guidance", "Clear next steps"].map((item) => (
                                         <span key={item} className="rounded-full border border-[#04343C]/12 bg-[#F8F8F7] px-3 py-1.5 font-manrope text-[11px] font-semibold text-[#04343C]/70">
                                             {item}
                                         </span>

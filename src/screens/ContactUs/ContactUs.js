@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   ArrowRight,
   Check,
@@ -61,16 +62,19 @@ const conversationSteps = [
 ];
 
 const serviceNeeds = [
-  "Corporate Taxes – CAD",
+  "Corporate Taxes",
   "Corporate Financing",
-  "Personal Taxes – US & CAD",
+  "Personal Taxes – Canada & USA",
   "Financial Reporting",
   "Bookkeeping & Payroll Services",
   "Advisory Services",
 ];
 
+const recaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+
 export const ContactUs = () => {
   const contentRef = useAutoScrollPastHero();
+  const recaptchaRef = useRef(null);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -78,6 +82,7 @@ export const ContactUs = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState("");
   const [modalState, setModalState] = useState({
     isOpen: false,
     title: "",
@@ -110,13 +115,35 @@ export const ContactUs = () => {
       return;
     }
 
+    if (!recaptchaSiteKey) {
+      showModal(
+        "Verification Unavailable",
+        "Spam protection is not configured yet. Please email us directly while we fix this.",
+        "error"
+      );
+      return;
+    }
+
+    if (!recaptchaToken) {
+      showModal(
+        "Verification Required",
+        "Please confirm that you’re not a robot before submitting.",
+        "error"
+      );
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source: "Contact Form", ...formData }),
+        body: JSON.stringify({
+          source: "Contact Form",
+          ...formData,
+          recaptchaToken,
+        }),
       });
 
       if (!response.ok) {
@@ -137,6 +164,8 @@ export const ContactUs = () => {
       );
     } finally {
       setIsSubmitting(false);
+      setRecaptchaToken("");
+      recaptchaRef.current?.reset();
     }
   };
 
@@ -373,6 +402,29 @@ export const ContactUs = () => {
                       placeholder="Tell us briefly about your situation, timing, and the support you’re looking for."
                       className="mt-2 min-h-[150px] resize-none rounded-xl border-[#04343C]/15 bg-[#F8F8F7] px-4 py-3 font-manrope text-[13px] leading-[1.7] text-[#04343C] placeholder:text-[#5E6E73]/55 focus-visible:border-[#0E5C66] focus-visible:ring-1 focus-visible:ring-[#0E5C66]"
                     />
+                  </div>
+
+                  <div>
+                    <p className="font-manrope text-[12px] font-bold text-[#04343C]">
+                      Spam protection
+                    </p>
+                    {recaptchaSiteKey ? (
+                      <div className="mt-2 max-w-full overflow-hidden">
+                        <div className="origin-top-left max-[380px]:-mb-4 max-[380px]:scale-[0.78]">
+                          <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={recaptchaSiteKey}
+                            onChange={(token) => setRecaptchaToken(token || "")}
+                            onExpired={() => setRecaptchaToken("")}
+                            onErrored={() => setRecaptchaToken("")}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <p role="alert" className="mt-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 font-manrope text-[11px] leading-[1.6] text-red-700">
+                        Verification is temporarily unavailable. Please email us directly.
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-4 border-t border-[#04343C]/10 pt-6 sm:flex-row sm:items-center sm:justify-between">

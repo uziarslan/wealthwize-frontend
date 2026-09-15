@@ -11,9 +11,9 @@ const companyLinks = [
 ];
 
 const serviceLinks = [
-  "Corporate Taxes – CAD",
+  "Corporate Taxes",
   "Corporate Financing",
-  "Personal Taxes – US & CAD",
+  "Personal Taxes – Canada & USA",
   "Financial Reporting",
   "Bookkeeping & Payroll Services",
   "Advisory Services",
